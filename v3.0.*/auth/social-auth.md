@@ -20,7 +20,7 @@ LoginManager
     if (result.isCancelled) {
       return Promise.reject(new Error('The user cancelled the request'));
     }
-    
+
     console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
     // get the access token
     return AccessToken.getCurrentAccessToken();
@@ -42,7 +42,40 @@ LoginManager
 
 ## Google
 
+You can use [react-native-simple-auth](https://github.com/adamjmcgrath/react-native-simple-auth) to access the oAuth API for Google. (It also supports Facebook, Twitter and Tumblr). Details for setting this up and code for an example app can be found under the link above.
+
+You can then combine this package with [ref auth#signInWithCredential]:
+
+```js
+import { google } from 'react-native-simple-auth';
+
+google({
+  appId: '123-123abc.apps.googleusercontent.com',
+  callback: 'com.reactnativesimpleauthexample:/oauth2redirect',
+}).then((info) => {
+  const credential = firebase.auth.GoogleAuthProvider.credential(info.credentials.id_token);
+
+  firebase.auth().signInWithCredential(credential)
+    .then((user) => {
+      // login successful
+    })
+    .catch((err) => {
+      // login failed, see err.message
+    });
+}).catch((err) => {
+  /*
+    error handling, you get:
+    - err.code
+    - err.description
+  */
+});
+```
+
+The call of ` google({...}) ` results in a new browser window, where you choose your google account. After that you will be redirected to your app via deep link and the promise gets resolved or rejected.
+
 ## Twitter
+
+You can use [react-native-simple-auth](https://github.com/adamjmcgrath/react-native-simple-auth) like above with the corresponding twitter-setup.
 
 ## Github
 
