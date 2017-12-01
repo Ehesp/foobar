@@ -79,14 +79,14 @@ allprojects {
 ```
 
 ## Core
-This release introduces full [firebase core](https://firebase.google.com/docs/reference/js/firebase) support. This means multiple firebase apps are now supported both in JS and native android/ios code (initialise additional apps on either end to have the app available in both automatically).
+This release introduces full [firebase core](https://firebase.google.com/docs/reference/js/firebase) support. This means multiple firebase apps are now supported both in JS and native android/ios code (initialize additional apps on either end to have the app available in both automatically).
 
 - ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **[breaking]** `new RNFirebase()` is no longer supported. See below for information about app initialisation.
-- ![#f03c15](https://placehold.it/15/fdfd96/000000?text=+) **[deprecation]** `initializeApp()` for apps that are already initialised natively (i.e. the default app initialised via google-services plist/json) will now log a deprecation warning. 
-    - As these apps are already initialised natively there's no need to call `initializeApp` in your JS code. For now, calling it will just return the app that's already internally initialised - in a future version this will throw an `already initialized` exception.
+- ![#f03c15](https://placehold.it/15/fdfd96/000000?text=+) **[deprecation]** `initializeApp()` for apps that are already initialized natively (i.e. the default app initialized via google-services plist/json) will now log a deprecation warning. 
+    - As these apps are already initialized natively there's no need to call `initializeApp` in your JS code. For now, calling it will just return the app that's already internally initialized - in a future version this will throw an `already initialized` exception.
     - Accessing apps can now be done the same way as the web sdk, simply call `firebase.app()` to get the default app, or with the name of specific app as the first arg, e.g. `const meow = firebase.app('catsApp');` to get a specific app.
 - `FirebaseApp.extendApp(props: Object)` support added.
-- RNFirebase no longer requires a singleton exported instance of your app to work (though you can still do this if you'd like). You can now just import RNFirebase in any module and straight away access all the initialised apps. e.g. : 
+- RNFirebase no longer requires a singleton exported instance of your app to work (though you can still do this if you'd like). You can now just import RNFirebase in any module and straight away access all the initialized apps. e.g. : 
 ```javascript 
 import firebase from 'react-native-firebase';
 
@@ -113,7 +113,7 @@ firebase.database(dogsApp).ref('puppies').once('value', (snapshot) => {
 
 - **TODO** initialising apps via js
     - **TODO** explain why js app initialisation is not supported for the default app (firebase sdk limited module support etc)
-    - **TODO** explain `app.onReady(): Promise` and why it's needed for JS initialised apps.
+    - **TODO** explain `app.onReady(): Promise` and why it's needed for JS initialized apps.
 - **TODO** what firebase modules support multiple apps
 - **TODO** delete app caveats - e.g cannot delete default apps, cannot delete apps on android, cannot get app config clientId on ios - see issue comments on firebase repo: https://github.com/firebase/firebase-ios-sdk/issues/140#issuecomment-315953708
 - **TODO** `firebase.SDK_VERSION`

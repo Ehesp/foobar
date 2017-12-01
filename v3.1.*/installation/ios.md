@@ -14,7 +14,7 @@ Once downloaded, place the file in the root of your iOS app at `ios/[YOUR APP NA
 
 Make sure that the `GoogleService-Info.plist` file has been added to your project within XCode.
 
-## 3. Initialise Firebase
+## 3. Initialize Firebase
 
 > The following instructions are also described on the Firebase console when going through the wizard.
 
@@ -43,7 +43,7 @@ We don't recommend it, but if for some reason you are unable to use Cocoapods, t
 ### 4.0) If you don't already have Cocoapods set up
 Follow the instructions to install Cocoapods and create your Podfile [here](https://firebase.google.com/docs/ios/setup#add_the_sdk).
 
-**NOTE: The Podfile needs to be initialised in the `ios` directory of your project. Make sure to update cocoapods libs first by running `pod update`**
+**NOTE: The Podfile needs to be initialized in the `ios` directory of your project. Make sure to update cocoapods libs first by running `pod update`**
 
 #### Troubleshooting
 1) When running `pod install` you may encounter an error saying that a `tvOSTests` target is declared twice. This appears to be a bug with `pod init` and the way that react native is set up.
