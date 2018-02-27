@@ -6,6 +6,18 @@ As the Firebase Web SDK has limited messaging functionality, the following metho
 
 Badge notification is well known on the iOS platform, but also supported by different Android devices / launchers. This library uses the [ShortcutBadger](https://github.com/leolin310148/ShortcutBadger) library to set the badge number also on Android. A list of supported launcher can be found there.
 
+To customise the notification icon, make the following changes:
+
+1) Add the following to the AndroidManifest.xml
+`<meta-data` <br />
+   `android:name="com.google.firebase.messaging.default_notification_icon"`<br />
+   `android:resource="@drawable/ic_stat_ic_notification" />`<br />
+`<meta-data` <br />
+    `android:name="com.google.firebase.messaging.default_notification_color"
+    android:resource="@color/colorAccent" />` <br />
+<br />Then add your notification icon (named `ic_stat_ic_notification.png`) to the drawable folders and add the color accent to the colors.xml (eg. `<color name="colorAccent">#44fff2</color>`).
+     
+
 !> On iOS, your app first needs to [ref messaging#requestPermission] in order to receive Cloud Messages.
 
 ## Methods
