@@ -8,6 +8,7 @@ Add the Firebase Cloud Messaging dependancy to `android/app/build.gradle`:
 dependencies {
   // ...
   compile "com.google.firebase:firebase-messaging:{{ android.firebase.version }}"
+  compile 'me.leolin:ShortcutBadger:1.1.18@aar' // optional for setBadgeNumber
 }
 ```
 
