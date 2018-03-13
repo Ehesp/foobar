@@ -4,12 +4,12 @@ First ensure you have followed the [initial setup guide](version /installation/i
 
 ## Add the dependency
 
-Add the Firebase Crashlytics dependancy to `android/app/build.gradle`:
+Add the Firebase Crashlytics dependency to `android/app/build.gradle`:
 
 ```groovy
 dependencies {
   // ...
-  compile('com.crashlytics.sdk.android:crashlytics:2.7.1@aar') {
+  compile('com.crashlytics.sdk.android:crashlytics:{{ android.fabric.version }}@aar') {
     transitive = true
   }
 }
@@ -21,7 +21,7 @@ Crashlytics also requires the Fabric Gradle dependency. In your projects `androi
 dependencies {
   // ...
   classpath 'com.google.gms:google-services:{{ android.google.services }}'
-  classpath 'io.fabric.tools:gradle:{{ android.fabric.gradle }}'
+  classpath 'io.fabric.tools:gradle:{{ android.fabric.tools }}'
 }
 ```
 

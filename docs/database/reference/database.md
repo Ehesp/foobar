@@ -1,10 +1,12 @@
 # Database
 
-The Firebase Database service interface.
-
-Do not call this constructor directly. Instead, use `firebase.database()`.
+```
+firebase.database
+```
 
 ## Methods
+
+The following methods are accessed via the Database instance `firebase.database()`.
 
 ### goOffline
 [method]goOffline() returns void;[/method]

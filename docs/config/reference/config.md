@@ -118,7 +118,7 @@ firebase.config().fetch()
 [/collapse]
 
 ### getKeysByPrefix
-[method]getKeysByPrefix(prefix) returns Promise containing array of strings;[/method]
+[method]getKeysByPrefix(prefix) returns Promise containing Array of strings;[/method]
 
 Returns all keys as an array by a prefix. If no prefix is defined all keys are returned.
 

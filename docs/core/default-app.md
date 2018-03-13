@@ -14,7 +14,7 @@ console.log(firebase.database().app.name); // '[DEFAULT]'
 
 ## Enable Database Persistence
 
-Enabling database persistence (setPersistence) via JS for the default app is no longer supported. This breaking change was added in v3 to prevent several race condition issues around.
+Enabling database persistence (setPersistence) via JS for the default app is no longer supported. This breaking change was made in v3.0.0 to avoid race condition issues.
 
 You can still however easily enable this natively for the default app instance:
 

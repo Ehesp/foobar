@@ -56,5 +56,12 @@ public class MainApplication extends Application implements ReactApplication {
         <data android:host="your.dynamic.links.domain.example.com" android:scheme="https"/>
     </intent-filter>
     ```
+3. If you wish to receive the intent in an existing instance of MainActivity, you may set the launchMode of MainActivity to singleTask in AndroidManifest.xml. See [<activity>](https://developer.android.com/guide/topics/manifest/activity-element.html) documentation for more information.
+  
+    ```xml
+    <activity
+      android:name=".MainActivity"
+      android:launchMode="singleTask">
+    ```
 
 > For more information on Analytics for links or Handling Dynamic Links using App Links see the official [Firebase Android SDK docs](https://firebase.google.com/docs/dynamic-links/android/receive#record-analytics)

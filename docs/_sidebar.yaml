@@ -166,6 +166,17 @@
       text: Install on Android
       icon: android
     - type: divider
+    - to: "/introduction"
+      text: Introduction
+    - to: "/device-token"
+      text: Device Registration Token 
+    - to: "/receiving-messages"
+      text: Receiving Messages
+    - to: "/topics"
+      text: Topics
+    - to: "/upstream-messages"
+      text: Sending Upstream Messages
+    - type: divider
     - to: "https://medium.com/the-modern-development-stack/react-native-push-notifications-with-firebase-cloud-functions-74b832d45386"
       text: With Cloud Functions
       type: external
@@ -173,7 +184,8 @@
     - type: divider
     - type: reference
       files:
-      - messaging
+      - Messaging
+      - RemoteMessage
   - title: Core / App
     path: core
     links:
@@ -228,7 +240,6 @@
       files:
       - database
       - DataSnapshot
-      - Database
       - OnDisconnect
       - Query
       - Reference
@@ -246,6 +257,69 @@
     - type: reference
       files:
       - links
+  - title: InstanceID
+    path: instanceid
+    links:
+    - to: "/ios"
+      text: Install on iOS
+      icon: apple
+    - to: "/android"
+      text: Install on Android
+      icon: android
+    - type: divider
+    - type: reference
+      files:
+      - instanceid
+  - title: Notifications
+    path: notifications
+    links:
+    - to: "/ios"
+      text: Install on iOS
+      icon: apple
+    - to: "/android"
+      text: Install on Android
+      icon: android
+    - type: divider
+    - to: "/introduction"
+      text: Introduction
+    - to: "/receiving-notifications"
+      text: Receiving Notifications
+    - to: "/displaying-notifications"
+      text: Displaying Notifications
+    - to: "/scheduling-notifications"
+      text: Scheduling Notifications
+    - to: "/android-channels"
+      text: Notification Channels
+      icon: android
+    - type: divider
+    - to: "https://medium.com/the-modern-development-stack/react-native-push-notifications-with-firebase-cloud-functions-74b832d45386"
+      text: With Cloud Functions
+      type: external
+      icon: info-circle-o
+    - type: divider
+    - type: reference
+      files:
+      - Notifications
+      - AndroidAction
+      - AndroidBadgeIconType
+      - AndroidCategory
+      - AndroidChannel
+      - AndroidChannelGroup
+      - AndroidDefaults
+      - AndroidGroupAlert
+      - AndroidImportance
+      - AndroidLights
+      - AndroidNotification
+      - AndroidNotifications
+      - AndroidProgress
+      - AndroidRemoteInput
+      - AndroidSemanticAction
+      - AndroidVisibility
+      - IOSNotification
+      - IOSAttachment
+      - IOSAttachmentOptions
+      - Notification
+      - NotificationOpen
   - title: Remote Config
     path: config
     links:

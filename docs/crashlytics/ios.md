@@ -7,8 +7,8 @@ First ensure you have followed the [initial setup guide](version /installation/i
 Add the following to your `Podfile`:
 
 ```ruby
-pod 'Fabric', '~> 1.7.2'
-pod 'Crashlytics', '~> 3.9.3'
+pod 'Fabric', '~> 1.7.5'
+pod 'Crashlytics', '~> 3.10.1'
 ```
 
 Run `pod update`.

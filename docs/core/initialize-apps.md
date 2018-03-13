@@ -1,6 +1,6 @@
 # Initializing Apps
 
-!> The **default** firebase app instance can **not** be initialized via JS, please setup your google services plist/json files in your android studio / xcode projects. See [Default App](/core/default-app) for more information.
+!> The **default** firebase app instance can **not** be initialized via JS, please setup your google services plist/json files in your android studio / xcode projects. See [Default App](version /core/default-app) for more information.
 
 App initialization in RNFirebase is for the most part the same as the web sdk, with only a few minor differences.
 

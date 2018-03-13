@@ -1,6 +1,7 @@
 android:
   fabric:
-    gradle: 1.24.4
+    tools: 1.25.1
+    version: 2.9.1
   firebase:
     version: 11.8.0
     plugins: 1.1.1
