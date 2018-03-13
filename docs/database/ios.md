@@ -10,4 +10,4 @@ Add the following to your `Podfile`:
 pod 'Firebase/Database'
 ```
 
-Run `pod update`.
+Run `pod install`.
