@@ -13,6 +13,18 @@ dependencies {
 }
 ```
 
+## Enable multi DEX
+Make sure you have `multiDexEnabled true` in `android/app/build.gradle`:
+```groovy
+android {
+    // ...
+    defaultConfig {
+        // ...
+        multiDexEnabled true
+    }
+}
+```
+
 ## Install the RNFirebase Firestore package
 
 Add the `RNFirebaseFirestorePackage` to your `android/app/src/main/java/com/[app name]/MainApplication.java`:
