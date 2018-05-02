@@ -30,7 +30,19 @@ To apply the plugin to your project, add the following to the **VERY BOTTOM** of
 apply plugin: 'com.google.gms.google-services'
 ```
 
-## 3. Add Firebase modules
+## 3. Include :react-native-firebase
+
+Add  include `:react-native-firebase` to `android/settings.gradle` before your `:app` project include:
+
+```groovy
+include ':react-native-firebase'
+project(':react-native-firebase').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-firebase/android')
+
+// Include of your project should be already here.
+include ':app'
+```
+
+## 4. Add Firebase modules
 
 The Firebase modules need to be installed as project dependencies. In the `android/app/build.gradle` file, add the following:
 
@@ -71,6 +83,6 @@ allprojects {
 }
 ```
 
-## 4. Install modules
+## 5. Install modules
 
 The `RNFirebasePackage` only provides your application with access to [Core](version /core/reference/core) features. Check out the installation guides on the other modules for how to use other Firebase features.
