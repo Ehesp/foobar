@@ -61,7 +61,7 @@ Two Query objects are equivalent if they represent the same location, have the s
 | query  | **[ref database.Query]** <br /> The query to compare against. |
 
 ### limitToFirst
-[method]isEqual(query) returns [ref database.Query];[/method]
+[method]limitToFirst(query) returns [ref database.Query];[/method]
 
 Generates a new Query limited to the first specific number of children.
 
