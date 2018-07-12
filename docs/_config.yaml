@@ -18,7 +18,7 @@ android:
     functions: 16.0.1
     invites: 16.0.1
     messaging: 17.1.0
-    perf: 16.1.0
+    perf: 16.0.0
     storage: 16.0.1
     plugins: 1.1.1
   gms:
