@@ -46,9 +46,17 @@ For the full set of iOS-specific parameters that can be set, please see the [ref
 
 ## 2) Display the notification
 
-### (Android) Set up a notification channel
+### Android Specific
 
 Before you can display a notification on Android, you must ensure you have created a Notification Channel, as explained [here](version /notifications/android-channels).
+
+Additionally, you must ensure the following have been set, otherwise local notifications will not display:
+
+```js
+notification
+  .android.setChannelId('channelId')
+  .android.setSmallIcon('ic_launcher');
+```
 
 ### Display the notification
 
