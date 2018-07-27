@@ -27,8 +27,8 @@ As Android provides some bespoke notification functionality, we have segregated 
 
 ```js
 notification
-  .android.setChannelId('your_channel_id')
-  .android.setSmallIcon('icon_name');
+  .android.setChannelId('channelId')
+  .android.setSmallIcon('ic_launcher');
 ```
 
 For the full set of Android-specific parameters that can be set, please see the [ref notifications.AndroidNotification] reference docs.
@@ -54,8 +54,8 @@ Additionally, you must ensure the following have been set, otherwise local notif
 
 ```js
 notification
-  .android.setChannelId('channelId')
-  .android.setSmallIcon('ic_launcher');
+  .android.setChannelId('your_channel_id')
+  .android.setSmallIcon('icon_name');
 ```
 
 ### Display the notification
