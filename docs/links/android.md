@@ -52,8 +52,8 @@ public class MainApplication extends Application implements ReactApplication {
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:host="your.dynamic.links.domain.example.com" android:scheme="http"/>
-        <data android:host="your.dynamic.links.domain.example.com" android:scheme="https"/>
+        <data android:host="example.page.link" android:scheme="http"/>
+        <data android:host="example.page.link" android:scheme="https"/>
     </intent-filter>
     ```
     
