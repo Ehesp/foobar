@@ -48,7 +48,7 @@ Run `pod update`.
     2. Add the following to the `didFinishLaunchingWithOptions` method before `[FIRApp Configure]`:
 
         ```objectivec
-        [FIROptions defaultOptions].deepLinkURLScheme = CUSTOM_URL_SCHEME;
+        [FIROptions defaultOptions].deepLinkURLScheme = @"https://example.page.link";
         ```
 
         ^-- where `CUSTOM_URL_SCHEME` is the custom URL scheme you defined in your Xcode project.
