@@ -4,6 +4,11 @@ When your app is in the foreground, you can choose to present a notification to 
 
 > iOS 9 does not support displaying a notification whilst the app is in the foreground
 
+----
+
+?> For Android notifications it is highly recommended that you read through the official [Android Notifications Overview](https://developer.android.com/guide/topics/ui/notifiers/notifications) page and also use it as a reference during development; e.g. if your Heads-up notification is not showing then see the `Heads-up notification` section which explains the conditions and versions that will trigger a notification to display in Heads-up form.
+
+
 ## 1) Building a notification
 
 React Native Firebase provides a [ref notifications.Notification] class which works as a builder to allow you to construct a notification.  This [ref notifications.Notification] class contains all the generic notification functionality that is shared between Android and iOS.

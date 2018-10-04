@@ -7,7 +7,7 @@ First ensure you have followed the [initial setup guide](version /installation/i
 Add the following to your `Podfile`:
 
 ```ruby
-pod 'Firebase/DynamicLinks'
+pod 'Firebase/DynamicLinks', '~> {{ ios.firebase.links }}'
 ```
 
 Run `pod update`.
@@ -24,7 +24,7 @@ Run `pod update`.
    You can confirm that your Firebase project is properly configured to use Dynamic Links in your iOS app by opening the following URL:
    
    ```text
-   https://app_code.app.goo.gl/apple-app-site-association
+   https://example.page.link/apple-app-site-association
    ```
        
      If your app is connected, the apple-app-site-association file contains a reference to your app's App Store ID and bundle ID. For example:

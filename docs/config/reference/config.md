@@ -4,6 +4,8 @@
 firebase.config
 ```
 
+?> **Upcoming Change:** Note that this API is likely to change in v5.1.0 to simplify it and reduce RN bridge calls. The API implemented currently is an initial draft to allow early access.
+
 ## Methods
 
 The following methods are accessed via the Config instance `firebase.config()`.

@@ -7,7 +7,7 @@ First ensure you have followed the [initial setup guide](version /installation/i
 Add the following to your `Podfile`:
 
 ```ruby
-pod 'Firebase/Database'
+pod 'Firebase/Database', '~> {{ ios.firebase.database }}'
 ```
 
 Run `pod update`.

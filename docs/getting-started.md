@@ -14,51 +14,49 @@ See the [Supported Firebase Features](#Supported-Firebase-Features) table below 
 
 We provide several options for you to get started with React Native Firebase, select a method from the table below that matches your requirements:
 
-|  | Manual Integration  | Free Starter Kit | Premium Starter Kits |
-|:---:|:-------------------:|:-----------------:|:--------------------:|
-|  | [![manual][manual]](version /installation/initial-setup) | [![basic][basic]](version /installation/basic-kit) | [![premium][premium]](/kits) |
-|  | Manually integrate React Native Firebase into your project by following our Android and iOS setup guides. | We've installed React Native Firebase into the standard React Native template app with only minimal steps for you to get going.      | Don't want to start from scratch? Use one of our premium starter kits to kick start development for your next app. |
-|  | Recommended for **experienced** React Native **developers** and **existing** React Native **projects**. | Recommended for **beginners** and **new** React Native **projects**. | Recommended for **beginners** and **new** React Native **projects**. |
-|  | [![continue][btn-guide]](version /installation/initial-setup) | [![btn-kit][btn-kit]](version /installation/basic-kit) | [![btn-kits][btn-kits]](/kits) |
+|  | Manual Integration  | Free Starter Kit |
+|:---:|:-------------------:|:-----------------:|
+|  | [![manual][manual]](version /installation/initial-setup) | [![basic][basic]](version /installation/basic-kit) |
+|  | Manually integrate React Native Firebase into your project by following our Android and iOS setup guides. | We've installed React Native Firebase into the standard React Native template app with only minimal steps for you to get going.      |
+|  | Recommended for **experienced** React Native **developers** and **existing** React Native **projects**. | Recommended for **beginners** and **new** React Native **projects**. |
+|  | [![continue][btn-guide]](version /installation/initial-setup) | [![btn-kit][btn-kit]](version /installation/basic-kit) |
 
 
 ## Supported Firebase Features
 > The Web SDK column indicates what modules/functionality from the Web SDK are usable within React Native. A '**?**' indicates partial support.
 
-| Firebase Features          | v2.2.x | v3.3.x | v4.1.x | Web SDK |
-| -------------------------- | :----: | :----: | :----: | :-----: |
-| **AdMob**                  |   ✅   |   ✅   |   ✅   |   ❌   |
-| **Analytics**              |   ✅   |   ✅   |   ✅   |   ❌   |
-| **App Indexing**           |   ❌   |   ❌   |   ❌   |   ❌   |
-| **Authentication**         |   ✅   |   ✅   |   ✅   |   ✅   |
-| _-- Phone Auth_            |   ❌   |   ✅   |   ✅   |   ❌   |
-| **Core**                   | **?**  |   ✅   |   ✅   |   ✅   |
-|  _-- Multiple Apps_        |   ❌   |   ✅   |   ✅   |   ✅   |
-| **Cloud Firestore**        |   ❌   |   ✅   |   ✅   | **?**  |
-| **Cloud Messaging (FCM)**  | **?**  | **?** |   ✅   |   ❌   |
-| **Crashlytics**            |   ❌   |   ✅   |   ✅   |   ❌   |
-| **Crash Reporting**        |   ✅   |   ✅   |   ✅   |   ❌   |
-| **Dynamic Links**          |   ❌   |   ✅   |   ✅   |   ❌   |
-| **[Functions Callable](https://firebase.googleblog.com/2018/04/launching-cloud-functions-for-firebase-1-0.html?m=1)**              |   ❌   |   ❌   |   ✅   |   ✅   |
-| **Invites**                |   ❌   |   ❌   |   ✅   |   ❌   |
-| **Instance ID**            |   ❌   |   ❌   | **?**  |   ❌   |
-| **Performance Monitoring** |   ✅   |   ✅   |   ✅   |   ❌   |
-| **Realtime Database**      |   ✅   |   ✅   |   ✅   |   ✅   |
-| _-- Offline Persistence_   |   ✅   |   ✅   |   ✅   | **?**  |
-| **Remote Config**          |   ✅   |   ✅   |   ✅   |   ❌   |
-| **Storage**                |   ✅   |   ✅   |   ✅   | **?**  |
+| Firebase Features          | v5.x.x | Web SDK |
+| -------------------------- | :----: | :-----: |
+| **AdMob**                  |   ✅   |   ❌   |
+| **Analytics**              |   ✅   |   ❌   |
+| **App Indexing**           |   ❌   |   ❌   |
+| **Authentication**         |   ✅   |   ✅   |
+| _-- Phone Auth_            |   ✅   |   ✅   |
+| **Core**                   |   ✅   |   ✅   |
+|  _-- Multiple Apps_        |   ✅   |   ✅   |
+| **Cloud Firestore**        |   ✅   |   ✅   |
+| **Cloud Messaging (FCM)**  |   ✅   |   ❌   |
+| **Crashlytics**            |   ✅   |   ❌   |
+| **Dynamic Links**          |   ✅   |   ❌   |
+| **[Functions Callable](https://firebase.googleblog.com/2018/04/launching-cloud-functions-for-firebase-1-0.html?m=1)**              |   ✅   |   ✅   |
+| **Invites**                |   ✅   |   ❌   |
+| **Instance ID**            |   ✅   |   ❌   |
+| **Performance Monitoring** |   ✅   |   ❌   |
+| **Realtime Database**      |   ✅   |   ✅   |
+| _-- Offline Persistence_   |   ✅   |  **?** |
+| **Remote Config**          |   ✅   |   ❌   |
+| **Storage**                |   ✅   |   ✅   |
 
 
 ### Supported versions - React Native / Firebase
 
 > The table below shows the supported versions of React Native and the Firebase SDKs for different versions of `react-native-firebase`
 
-|                        | 2.2.x    | 3.3.x    |  4.0.x   |  **4.1.x**  |   4.2.x  |
-|------------------------|----------|----------|----------|----------|----------|
-| React Native           | 0.47 +   | 0.50 +   | 0.52 +   | 0.52 +   |  0.52 +  |
-| Firebase Android SDK   | 11.0.0 + | 11.8.0 + | 12.0.0 + | 15.0.0 + | 15.0.0 + |
-| Firebase iOS SDK       | 4.0.0 +  | 4.7.0 +  | 4.11.0 + | 4.11.0 + |  5.0.0 + |
-
+|                           |  3.3.x   |  4.3.x  |      5.0.x      |
+| ------------------------- | :------: | :-----: | :-------------: |
+| React Native              | 0.50-52  | 0.52-55 |  ^0.56 - ^0.57  |
+| Play Services Android SDK | 11.8.0 + | 15.0.1  |     ^15.0.1     |
+| Firebase iOS SDK          | 4.7.0 +  |  5.3.0  | ^5.8.0 - ^5.9.0 |
 
 ## Questions
 
@@ -70,7 +68,7 @@ Please make sure to complete the issue template before opening an issue. Issues 
 
 ## Feature Requests
 
-For feature requests please use our [Canny Board](http://invertase.link/requests).
+For feature requests please visit our [Feature Request Board](https://boards.invertase.io/react-native-firebase).
 
 ## Changelog
 

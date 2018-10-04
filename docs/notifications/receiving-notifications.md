@@ -63,7 +63,7 @@ Notifications encompass three different types:
 
 A notification will trigger one of two listeners depending on the state of your application:
 
-- `onNotificationDisplayed` - Triggered when a particular notification has been displayed
+- `onNotificationDisplayed` - Triggered when a particular notification has been displayed. **iOS Only**: see [ref notifications.IOSNotification#complete] for details on handling completion of background downloads
 - `onNotification` - Triggered when a particular notification has been received
 
 ```js

@@ -90,4 +90,4 @@ Sets the SemanticAction for this action.
 | --------- | ------- |
 | showUserInterface  | **boolean** |
 
-Set whether or not this action will open a user interface.
+Set whether or not this action will open the user interface. Defaults to true.

@@ -37,3 +37,8 @@ Scheduled notifications behave as follows:
 | iOS     | `onNotification` triggered | `onNotificationOpened` triggered if the notification is tapped | `getInitialNotification` is populated if the notification is tapped and opens the app |
 | Notes   | No visible notification is shown to the user, it is up to you to display notifications manually | The notification is presented to the user by the Mobile Device's OS | The notification is presented to the user by the Mobile Device's OS |
 
+
+----
+
+?> For Android notifications it is highly recommended that you read through the official [Android Notifications Overview](https://developer.android.com/guide/topics/ui/notifiers/notifications) page and also use it as a reference during development; e.g. if your Heads-up notification is not showing then see the `Heads-up notification` section which explains the conditions and versions that will trigger a notification to display in Heads-up form.
+

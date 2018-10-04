@@ -2,6 +2,8 @@
 
 First ensure you have followed the [initial setup guide](version /installation/initial-setup) and the [messaging setup guide](version /messaging/android).
 
+?> Before getting started with Android notifications it is highly recommended that you read through the official [Android Notifications Overview](https://developer.android.com/guide/topics/ui/notifiers/notifications) page and also use it as a reference during development; e.g. if your Heads-up notification is not showing then see the `Heads-up notification` section which explains the conditions and versions that will trigger a notification to display in Heads-up form.
+
 ## Install the RNFirebase Notifications package
 
 Add the `RNFirebaseNotificationsPackage` to your `android/app/src/main/java/com/[app name]/MainApplication.java`:

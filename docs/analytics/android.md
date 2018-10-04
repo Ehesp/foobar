@@ -2,16 +2,7 @@
 
 First ensure you have followed the [initial setup guide](version /installation/initial-setup).
 
-## Add the dependency
-
-Add the Firebase Analytics dependency to `android/app/build.gradle`:
-
-```groovy
-dependencies {
-  // ...
-  implementation "com.google.firebase:firebase-analytics:{{ android.firebase.analytics }}"
-}
-```
+Analytics does not require any other dependencies to work.
 
 ## Install the RNFirebase Analytics package
 

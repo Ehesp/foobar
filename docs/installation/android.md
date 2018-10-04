@@ -56,8 +56,8 @@ Due to some breaking changes in v12+ of the Android Firebase libraries, you'll n
 ```groovy
 buildscript {
     repositories {
+        google()  // <-- Check this line exists and is above jcenter
         jcenter()
-        google()  // <-- Check this line exists
         // ...
     }
     // ...
@@ -86,17 +86,22 @@ Google Play services from 11.2.0 onwards require their dependencies to be downlo
 allprojects {
     repositories {
         mavenLocal()
+        google() // <-- Add this line above jcenter
         jcenter()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url "$rootDir/../node_modules/react-native/android"
         }
-        // -------------------------------------------------
-        // Add this below the existing maven property above
-        // -------------------------------------------------
-        google()
     }
 }
+```
+
+### Using with Proguard enabled
+
+When using react-native-firebase with Proguard enabled (`minifyEnabled true in android/app/build.gradle`) you need to update your proguard-rules.pro file (`android/app/proguard-rules.pro`) to include the following lines:
+```
+-keep class io.invertase.firebase.** { *; }
+-dontwarn io.invertase.firebase.**
 ```
 
 ## 4. Install modules

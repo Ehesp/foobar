@@ -50,3 +50,25 @@ Returns a promise that resolves if the channels are created, otherwise it is rej
 | Parameter |         |
 | --------- | ------- |
 | channels   | **Array<[ref notifications.AndroidChannel]>** <br /> The channels to create.  |
+
+### deleteChannel
+[method]deleteChannel(channelId) returns Promise;[/method]
+
+Deletes a channel.
+
+Returns a promise that resolves if the channel is deleted, otherwise it is rejected with an error.
+
+| Parameter |         |
+| --------- | ------- |
+| channelId   | **string** <br /> The channel to delete.  |
+
+### deleteChannelGroup
+[method]deleteChannelGroup(channelGroupId) returns Promise;[/method]
+
+Deletes a channel group.
+
+Returns a promise that resolves if the channel group is deleted, otherwise it is rejected with an error.
+
+| Parameter |         |
+| --------- | ------- |
+| channelGroupId   | **string** <br /> The channel group to delete.  |

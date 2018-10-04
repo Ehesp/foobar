@@ -123,3 +123,18 @@ Sets the thread ID for the notification.
 | Parameter |         |
 | --------- | ------- |
 | threadIdentifier  | **string** <br /> The thread ID. |
+
+### complete
+[method]complete(backgroundFetchResult) returns [void];[/method]
+
+The function to execute when the download operation is complete. When calling this function, pass in a value from [ref notifications.IOSNotifications#backgroundFetchResult] that best describes the results of your download operation.
+
+This function is defined if [ref notifications.IOSNotifications#shouldAutoComplete] is `false` and the notification happens while the app is in the background (see [ref notifications.Notifications#onNotificationDisplayed]). Otherwise this function is `undefined`. 
+
+?> If [ref notifications.IOSNotifications#shouldAutoComplete] is `false` you must call this function and should do so as soon as all background work is complete. Failure to do so will result in memory leaks in the native iOS code.
+
+> See the native [application:didReceiveRemoteNotification:fetchCompletionHandler:](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623013-application?language=objc) method for more details on iOS notification completion.
+
+| Parameter |         |
+| --------- | ------- |
+| backgroundFetchResult  | **string** <br /> The background fetch result. |

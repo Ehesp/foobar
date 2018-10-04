@@ -1,6 +1,6 @@
 # Phone Auth
 
-RNFirebase provides two methods to sign users in with their phone number; [ref auth#signInWithPhoneNumber] and [ref auth#verifyPhoneNumber]. Both provide different a different workflow to tie it best into your app; `signInWithPhoneNumber` will sign the user in automatically once the user had confirmed their phone number, whilst `verifyPhoneNumber` will provide feedback on the current verification state but requires you to manually sign the user in once confirmed.
+RNFirebase provides two methods to sign users in with their phone number; [ref auth#signInWithPhoneNumber] and [ref auth#verifyPhoneNumber]. Both provide a different workflow to tie it best into your app; `signInWithPhoneNumber` will sign the user in automatically once the user had confirmed their phone number, whilst `verifyPhoneNumber` will provide feedback on the current verification state but requires you to manually sign the user in once confirmed.
 
 ## signInWithPhoneNumber
 
@@ -186,7 +186,7 @@ export default class PhoneAuthTest extends Component {
 
 ## verifyPhoneNumber
 
-This implementation gives you full control of the phone number verification flow on either platform as well as a flexible api to suite any UI flow and should be familiar to use if you've used things like storage upload tasks / database on listeners.  It is of particular use if you want to link a phone credential with an existing account rather than just sign the user in.
+This implementation gives you full control of the phone number verification flow on either platform as well as a flexible api to suit any UI flow and should be familiar to use if you've used things like storage, upload tasks / database on listeners.  It is of particular use if you want to link a phone credential with an existing account rather than just sign the user in.
 
 ### Example
 

@@ -7,7 +7,7 @@ First ensure you have followed the [initial setup guide](version /installation/i
 Add the following to your `Podfile`:
 
 ```ruby
-pod 'Firebase/Storage'
+pod 'Firebase/Storage', '~> {{ ios.firebase.storage }}'
 ```
 
 Run `pod update`.

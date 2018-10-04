@@ -4,6 +4,8 @@
 firebase.crashlytics
 ```
 
+?> **Upcoming Change:** Note that this API is likely to change in v5.1.0 to simplify setting values/multiple values as well as better JS Error reporting. The API implemented currently is an initial draft to allow early access.
+
 ## Methods 
 
 The following methods are accessed via the Crashlytics instance `firebase.crashlytics()`.

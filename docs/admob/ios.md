@@ -7,7 +7,7 @@ First ensure you have followed the [initial setup guide](version /installation/i
 Add the following to your `Podfile`:
 
 ```ruby
-pod 'Firebase/AdMob'
+pod 'Firebase/AdMob', '~> {{ ios.firebase.ads }}'
 ```
 
 Run `pod update`.

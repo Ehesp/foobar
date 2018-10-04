@@ -12,6 +12,7 @@ The following methods are accessed via the Analytics instance `firebase.analytic
 [method]logEvent(event, params) returns void;[/method]
 
 Log a custom event with optional params.
+Note: up to 100 characters is the maximum character length supported for event parameters.
 
 | Parameter |         |
 | --------- | ------- |
@@ -75,3 +76,14 @@ Sets a key/value pair of data on the current user.
 | --------- | ------- |
 | name   | **string**  |
 | value   | **string**  |
+
+### setUserProperties
+[method]setUserProperties(fieldMapping) returns void;[/method]
+
+Sets mutiple key/value pair of data on the current user.
+Param object's keys are property value and values are values.
+
+
+| Parameter |         |
+| --------- | ------- |
+| fieldMapping   | **object**  |

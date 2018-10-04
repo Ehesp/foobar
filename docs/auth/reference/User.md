@@ -28,25 +28,32 @@ Returns the current token if it has not expired, otherwise this will refresh the
 | --------- | ------- |
 | forceRefresh   | **boolean** (optional) <br /> Force refresh regardless of token expiration. |
 
-### getToken
-[method]getToken(forceRefresh) returns Promise containing string;[/method]
+### getIdTokenResult
+[method]getIdTokenResult(forceRefresh) returns Promise containing [ref auth.IdTokenResult];[/method]
 
-Returns a JWT token used to identify the user to a Firebase service.
+Returns a [ref auth.IdTokenResult] object which contains the ID token JWT string and other properties for getting
+data associated with the token and all the decoded payload claims.                        
 
-Returns the current token if it has not expired, otherwise this will refresh the token and return a new one.
+?> While client side parsing of ID tokens is convenient for UI changes depending on payload content, it is not sufficient or secure. Server side ID token verification is always required when enforcing access to restricted resources.
 
-This property is deprecated. Use [ref auth.User#getIdToken] instead.
+Returns the current [ref auth.IdTokenResult] object if it has not expired, otherwise this will refresh the token and return a new one.
 
 | Parameter |         |
 | --------- | ------- |
 | forceRefresh   | **boolean** (optional) <br /> Force refresh regardless of token expiration. |
+
+#### Guides
+
+ - [Firebase - Control Access with Custom Claims and Security Rules](https://firebase.google.com/docs/auth/admin/custom-claims)
+ - [YouTube - Firecasts - Controlling Data Access Using Firebase Auth Custom Claims](https://youtu.be/3hj_r_N0qMs)
+
 
 ### linkAndRetrieveDataWithCredential
 [method]linkAndRetrieveDataWithCredential(credential) returns Promise containing [ref auth.UserCredential];[/method]
 
 Links the user account with the given credentials, and returns any available additional user information, such as user name.
 
-This method will be renamed to `linkWithCredential` replacing the existing method with the same name in the next major version change.
+?> This method is deprecated.
 
 | Parameter |         |
 | --------- | ------- |
@@ -67,11 +74,9 @@ This method will be renamed to `linkWithCredential` replacing the existing metho
 | auth/invalid-verification-id  | Thrown if the credential is a [ref auth.PhoneAuthProvider#credential] and the verification ID of the credential is not valid. |
 
 ### linkWithCredential
-[method]linkWithCredential(credential) returns Promise containing [ref auth.User];[/method]
+[method]linkWithCredential(credential) returns Promise containing [ref auth.UserCredential];[/method]
 
 Links the user account with the given credentials, and returns any available additional user information, such as user name.
-
-This method will be deprecated and will be updated to resolve with a `firebase.auth.UserCredential` as is returned in [ref auth.User#linkAndRetrieveDataWithCredential].
 
 | Parameter |         |
 | --------- | ------- |
@@ -96,7 +101,7 @@ This method will be deprecated and will be updated to resolve with a `firebase.a
 
 Re-authenticates a user using a fresh credential. Use before operations such as [ref auth.User#updatePassword] that require tokens from recent sign-in attempts.
 
-This method will be renamed to `reauthenticateWithCredential` replacing the existing method with the same name in the next major version change.
+?> This method is deprecated.
 
 | Parameter |         |
 | --------- | ------- |
@@ -115,11 +120,9 @@ This method will be renamed to `reauthenticateWithCredential` replacing the exis
 | auth/invalid-verification-id  | Thrown if the credential is a [ref auth.PhoneAuthProvider#credential] and the verification ID of the credential is not valid. |
 
 ### reauthenticateWithCredential
-[method]reauthenticateWithCredential(credential) returns Promise containing void;[/method]
+[method]reauthenticateWithCredential(credential) returns Promise containing [ref auth.UserCredential];[/method]
 
 Re-authenticates a user using a fresh credential. Use before operations such as [ref auth.User#updatePassword] that require tokens from recent sign-in attempts.
-
-This method will be deprecated and will be updated to resolve with a `firebase.auth.UserCredential` as is returned in [ref auth.User#reauthenticateAndRetrieveDataWithCredential].
 
 | Parameter |         |
 | --------- | ------- |
@@ -204,12 +207,26 @@ Important: this is a security sensitive operation that requires the user to have
 | auth/weak-password  | Thrown if the password is not strong enough. |
 | auth/requires-recent-login  | Thrown if the user's last sign-in time does not meet the security threshold. Use [ref auth.User#reauthenticateWithCredential] to resolve. This does not apply if the user is anonymous. |
 
+
+### updatePhoneNumber
+[method]updatePhoneNumber(credential: [ref auth.AuthCredential]) returns Promise containing void;[/method]
+
+Update the current user's phone number with a phone AuthCredential - call [ref auth.Auth#verifyPhoneNumber] with the new phone number and pass the outputted credential to this method.
+
+Important: this is a security sensitive operation that requires the user to have recently signed in. If this requirement isn't met, ask the user to authenticate again and then call [ref auth.User#reauthenticateWithCredential].
+
+| Parameter |         |
+| --------- | ------- |
+| credential   | **[ref auth.AuthCredential]** |
+
 #### Error Codes
 
 | Code | Message |
 | --------- | ------- |
+| auth/requires-recent-login  | Thrown if the user's last sign-in time does not meet the security threshold. Use [ref auth.User#reauthenticateWithCredential] to resolve. This does not apply if the user is anonymous. |
 | auth/invalid-verification-code  | Thrown if the verification code of the credential is not valid. |
 | auth/invalid-verification-id  | Thrown if the verification ID of the credential is not valid. |
+
 
 ### updateProfile
 [method]updateProfile(profile) returns Promise containing void;[/method]
@@ -232,7 +249,7 @@ The user's display name (if available).
 
 The user's email address (if available).
 
-### emailVerified
+### emailVerified
 [method]emailVerified returns boolean;[/method]
 
 Returns `true` if the user's email address has been verified.
@@ -256,6 +273,8 @@ The phone number normalized based on the E.164 standard (e.g. +16505550101) for 
 [method]photoURL returns string or null;[/method]
 
 The URL of the user's profile picture (if available).
+
+Caveat: The Facebook profile picture URL provided by `firebase.auth().currentUser.photoUrl` has an expiration date: after a few days you will get an `URL signature expired` error. A workaround is either to store the image in your database or to use `firebase.auth().currentUser.providerData[0].photoURL + '?height=' + myCustomHeight`.
 
 ### providerData
 [method]providerData returns Array of [ref auth.UserInfo];[/method]
@@ -288,9 +307,7 @@ The following methods are not supported in RNFirebase as they cannot work in the
 
 ### reauthenticateWithRedirect
 
-### updatePhoneNumber
-
-## Unsupported properties
+## Unsupported properties
 
 The following properties are not supported in RNFirebase as they cannot work in the React Native environment or have a different implementation.
 

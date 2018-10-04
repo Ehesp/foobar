@@ -1,179 +1,232 @@
-# v4.0.0 Changelog
+# Release Notes
 
-TL;DR: The one everybody has been waiting for: our overhaul of messaging and notification functionality to make it more reliable, better documented and easier to use.
-
-Plus, we've got Firebase Invites, Multi-Database url support, an overhaul of Dynamic Links and some other minor fixes.
-
-**Notification highlights:**
-- Better separation of concerns: `messaging`, `notifications` and `instanceid`
-- Fully documented API
-- Builder classes provide a type safe way to construct [messages](https://rnfirebase.io/docs/v4.0.x/messaging/reference/RemoteMessage) and [notifications](https://rnfirebase.io/docs/v4.0.x/notifications/reference/Notification)
-- Clearer distinction between Android and IOS specific functionality
-- Support for Android Notification Channels, Android Actions and Remote Input
-- Support for BigTextStyle and BigPictureStyle Android notifications
-
-**Outstanding functionality (to be added in a later release):**
-- Support for iOS notification categories
-
-----
-
-## Quick Start
+## 5.0.0
 
 Install using:
  
+```bash
+npm install --save react-native-firebase@latest
 ```
-npm install --save react-native-firebase
-```
+
+
+### General
+
+ - Remove `fbjs` peer dependency
+ - Update Flow version: `^0.78.0`
+ - Update TypeScript version: `^0.78.0`
+ - Support React Native versions `^0.56.0` to `^0.57.0`
+ - Remove bloated `opencollective` install only dependency
+ - Remove formerly deprecated Crash Reporting (`firebase.crash()`)
+ - Update build script to Babel 7 & [`@invertase/babel-preset-react-native-syntax`](https://github.com/invertase/babel-preset-react-native-syntax)
+ - Add support for import destructuring e.g. `import { database } from 'react-native-firebase'`
+ - Remove internal clone of React Natives JS event emitter - now points to exposed version from React Native directly - [dbe2673](https://github.com/invertase/react-native-firebase/commit/dbe2673bc637b921ad334c900da88ca1a90d3709)
+ - [android][internals] `Utils.isAppInForeground` not correctly accounting for RN LifecycleState;
+   - this utility in some rare cases would return true that Activity was in the foreground, however, React Native was still in the process of resuming, this, for example, led to crashes in HeadlessJS Notification tasks: `"Tried to start task RNFirebaseBackgroundMessage while in foreground, but this is not allowed."`
 
 ----
 
-## Messaging 
-
-### Messaging vs Notifications
-
-We have made the conscious decision to separate this functionality into two distinct areas:
-
-- Messaging
-  - handles remote FCM data-only messages
-  - follows the official Firebase JS web SDK's messaging API where possible 
-
-- Notifications
-  - handles remote FCM notification and notification + data messages, 
-  - handles the display and receipt of locally displayed notifications
-
-You can read some more here: https://rnfirebase.io/docs/v4.0.x/messaging/introduction#Message-types
-
-### Receiving messages and notifications
-
-With our previous implementation, we had a single `onMessage` listener which was triggered for all messaging and notification actions, whether that was a notification in the foreground, background or even when the notification was pressed.  This meant you'd have to implement some logic to check the state of the notification to try and identify what had actually happened.
-
-To simplify things, we've broken out a number of different listeners to provide greater control and customisation:
-
-- Messaging
-  - `onMessage`: Triggered when a data-only message is received remotely from FCM
-
-Read more here: https://rnfirebase.io/docs/v4.0.x/messaging/receiving-messages
-
-- Notifications
-  - `onNotification`: Triggered when a remote of local notification is received
-    - This will typically be triggered when your app is in the foreground
-    - The notification will not have been displayed automatically to the end user by the OS, and it is up to you as the developer to display it if you wish to using `firebase.notifications().displayNotification()`: https://rnfirebase.io/docs/v4.0.x/notifications/displaying-notifications
-  - `onNotificationDisplayed`: Triggered when a remote or local notification is displayed by the OS
-    - This will typically be triggered when your app is in the background, or in the foreground if you have called `firebase.notifications().displayNotification()` directly.
-    - The notification will have been displayed automatically to the end user by the OS
-  - `onNotificationOpened`: Triggered when a remote or local notification is tapped / pressed / opened by the user
-    - This will be triggered if your app is in the background or foreground
-    - The event contains information about the notification and the action that the user took: https://rnfirebase.io/docs/v4.0.x/notifications/receiving-notifications#4)-Listen-for-a-Notification-being-opened
-    - If your app is closed, then `firebase.notifications().getInitialNotification()` will be populated with this information when the app is started by a notification being opened.
-
-Read more here: https://rnfirebase.io/docs/v4.0.x/notifications/receiving-notifications and https://rnfirebase.io/docs/v4.0.x/notifications/introduction
-
-### Foreground vs Background
-
-With our previous implementation, we relied on the `show_in_foreground` flag existing within the notification content to force the library to automatically show the notification if the app was running in the foreground.  Whilst this (kind of) worked, it meant it was down to the notification sender to control the display of the notification, not the app itself.
-
-The `show_in_foreground` flag no longer exists and instead you can use the listeners described above to give better control, e.g.
+### Authentication
 
 ```js
-firebase.notifications().onNotification((notification: Notification) => {
-  // You've received a notification that hasn't been displayed by the OS
-  // To display it whilst the app is in the foreground, simply call the following
-  firebase.notifications().displayNotification(notification);
-});
+firebase.auth()
 ```
 
-When the app is in the background, the OS will automatically handle the notification display when a remote or local notification is received.  If you wish to display a heads up notification on Android, we recommend you look at sending data only messages to your app.  These can be handled when your app is in the background or closed by following the instructions here: https://rnfirebase.io/docs/v4.0.x/messaging/receiving-messages#4)-(Optional)(Android-only)-Listen-for-FCM-messages-in-the-background
+ - Add support for [ref auth.AuthSettings] - allows for automated testing phone authentication flows in your test suites/CI.
+    - Guide: [Test with whitelisted phone numbers](https://firebase.google.com/docs/auth/web/phone-auth#test-with-whitelisted-phone-numbers)
+ - Add support for [ref auth.User#getIdTokenResult];
+    - Guide: [Firebase - Control Access with Custom Claims and Security Rules](https://firebase.google.com/docs/auth/admin/custom-claims)
+    - YouTube - Firecasts: [Controlling Data Access Using Firebase Auth Custom Claims](https://youtu.be/3hj_r_N0qMs)
+ - Add support for [ref auth.User#updatePhoneNumber]
+ - Remove formerly deprecated method `getToken` - use [ref auth.User#getIdToken] or [ref auth.User#getIdTokenResult] instead
+ - Deprecated all `*AndRetrieveData*` `auth()` and `auth().currentUser` methods;
+    - e.g. `signInAndRetrieveDataWithEmailAndPassword` is now deprecated and `signInWithEmailAndPassword` undeprecated with the output of `signInWithEmailAndPassword` becoming that of `signInAndRetrieveDataWithEmailAndPassword`. The same applies to all the other AndRetrieveData methods.
+ - [ref auth.ActionCodeInfo#operation] now correctly returned - native code was incorrectly returning a key named `actionType`
+   - Additionally added the `EMAIL_SIGNIN` type
 
 ----
 
-## Firebase Invites
+### Cloud Firestore
 
-We've added full support for Firebase Invites: [iOS](https://rnfirebase.io/docs/v4.0.x/invites/ios) | [Android](https://rnfirebase.io/docs/v4.0.x/invites/android)
-
-----
-
-## Dynamic Links
-
-We've rolled out the `Builder` approach to Dynamic Links.  Check out the [createDynamicLink](https://rnfirebase.io/docs/v4.0.x/links/reference/links#createDynamicLink) docs and [Dynamic Link](https://rnfirebase.io/docs/v4.0.x/links/reference/DynamicLink) reference docs
-
-!> This is a breaking change.
-
-----
-
-## Cloud Firestore
-
-- Added support for `disableNetwork` and `enableNetwork`
-- Added typescript definitions for Transactions
-
-----
-
-## Authentication
-
-- Fixed issue with null photo URL when updating a user profile #911
-
-----
-
-## Database
-
-- Fixed issue with server time offset #910
-- Database now supports using multiple database instances via database urls e.g.:
 ```js
-const dbShard = firebase.database('https://rnfirebase-3.firebaseio.com/');
+firebase.firestore()
 ```
-> Big shout out to @akshetpandey and @Chenjh1992 for their help getting this pushed through on #881 
 
-## Crashlytics
+#### All Platforms
 
-- Crashlytics now lives at the top level under `firebase.crashlytics()`
+ - Add support for `'array-contains'` querying
+   - Guide: [Better Arrays in Cloud Firestore!](https://firebase.googleblog.com/2018/08/better-arrays-in-cloud-firestore.html)
+     - `arrayUnion` & `arrayRemove` support coming soon
+ - Add support for `NaN` and `Infinity` values in documents - [#1357](https://github.com/invertase/react-native-firebase/issues/1357)
+ - Document & Query snapshot listeners now correctly returns an Error class instance on error, formerly returned a plain object
+   - Instance of [ref firestore.SnapshotError]
+ - Collection / Document listeners now internally handle errors even if no error observer provided
+   -  Additionally now self-unsubscribes listeners on JS and Native if an error occurs, not leaving them in limbo
+
+#### Android
+
+ - `AsyncTask` serialize Document/Query snapshots to reduce UI/FPS lag - [#1223](https://github.com/invertase/react-native-firebase/issues/1223)
+  - [Before & After change UI lag comparison video](https://drive.google.com/file/d/121Ouk57Ai29atadSdt_klILtDy1iTEhO/view)
 
 ----
 
-## Upgrade instructions
+### Cloud Functions
+
+```js
+firebase.functions()
+```
+
+ - Add support for specifying a custom function region, e.g. `us-central1`
+ - Add support for multiple Firebase app instances, e.g. `firebase.app('someOtherApp').functions()`
+ - Add support for [ref functions.Functions#useFunctionsEmulator], e.g. run a Cloud Functions emulator locally and point your app to it
+   - Guide: [Functions - Local Emulator](https://firebase.google.com/docs/functions/local-emulator)
+ - [ref functions.HttpError] now correctly extends `Error` - was a Babel issue formerly blocking this
+
+**Examples:**
+
+```js
+// default app and region
+const functions = firebase.functions();
+// custom FirebaseApp
+const functions = firebase.functions(app);
+// custom region
+const functions = firebase.functions('us-central1');
+// custom FirebaseApp and region
+const functions = firebase.functions(app, 'us-central1');
+
+// cloud functions local emulator support
+// see https://firebase.google.com/docs/functions/local-emulator
+const origin = 'http://localhost:3000';
+await functions.useFunctionsEmulator(origin);
+```
+
+----
+
+### Crashlytics
+
+```js
+firebase.crashlytics()
+```
+
+#### iOS
+
+ - Fix for `module not initialized` errors when using Crashlytics via manual linking (without Pods)
+   - Commit: [e20652](https://github.com/invertase/react-native-firebase/commit/e20652d67d36e5045fe6ca6c6a6f5567ac40f5a7)
+
+----
+
+### Database
+
+```js
+firebase.database()
+```
+
+#### Android
+
+ - [internal] Transactions now correctly reset signalled state on every transaction attempt
+   - To address "already signalled" exceptions
+
+----
+
+### Dynamic Invites
+
+```js
+firebase.invites()
+```
+
+#### Android
+
+ - Fix Invites module error `"requestCode must be in 16 bits"`
+
+----
+
+
+### Messaging 
+
+#### All Platforms
+
+ - Add [ref messaging#deleteToken] support - requires [ref iid]()
+ 
+#### iOS
+
+ - Add support for Background notification completion handlers - [#1393](https://github.com/invertase/react-native-firebase/pull/1393)
+ - Fix for [ref messaging.Messaging#getToken] resolving null if called early on in app initialization
+    - Commit: [66aa5cc](https://github.com/invertase/react-native-firebase/commit/66aa5ccb67356bc22ef27507c93be737d1871b4b#diff-06c99e7e87036c83640e069ed3ddea7e)
+
+----
+
+### Notifications 
+
+#### Android
+
+ - Fix `Null Pointer Exception` crash caused by calling `deleteChannelGroup` on a `channelId` that does not exist
+ - Fix `createChannelGroups` issue - native method incorrectly named
+ - Fix a crash that occurred when using `vibrationPattern` - native array not initialized with the correct size
+ - Fix issue with alert once notification behavior - native was incorrectly calling `setOngoing` instead of `setOnlyAlertOnce`
+ - Notifications now uses localized title and body from remote messages (e.g. `title_loc_key`) if `title` or `body` are not specified
+
+#### iOS
+
+ - Add support for Background notification completion handlers - [#1393](https://github.com/invertase/react-native-firebase/pull/1393)
+
+----
+
+### Performance Monitoring 
+
+ - Add support for custom [ref perf-mon.Trace] attributes
+   - Guide: [Monitor Custom Attributes](https://firebase.google.com/docs/perf-mon/custom-attributes)
+   - **Methods**:
+       - [ref perf-mon.Trace#getAttribute]
+       - [ref perf-mon.Trace#getAttributes]
+       - [ref perf-mon.Trace#putAttribute]
+       - [ref perf-mon.Trace#removeAttribute]
+ - Add support for [ref perf-mon.HttpMetric]'s
+ - **BREAKING**: `Trace#incrementCounter` has been removed. See [ref perf-mon.Trace#incrementMetric] for a replacement.
+
+----
+
+### Remote Config 
+
+ - Allow handling Remote config throttled exceptions, e.g. rejects with code `"config/throttled"` - [#1295](https://github.com/invertase/react-native-firebase/pull/1295)
+
+----
+
+
+### Utils
+
+```js
+firebase.utils()
+```
+
+#### Android
+
+ - Add `firebase.utils().getPlayServicesStatus(): Promise<GoogleApiAvailabilityType | null>` - [#1257](https://github.com/invertase/react-native-firebase/issues/1257)
+  - This is the same as the static `firebase.utils.playServicesAvailability` - but allows forcing an update/refresh of the status
+
+----
+
+### Upgrade instructions
 
 ```
 npm install --save react-native-firebase@latest
 ```
 
-### Gradle
+> For a reference app to look through versions see our [/tests](https://github.com/invertase/react-native-firebase/tree/master/tests) app.
 
-Due to some breaking changes in v12 of the Android libs, you'll need to upgrade your Gradle version to at least v4.4 and make a few other tweaks as follows:
+#### React Native
 
-1) In `android/gradle/wrapper/gradle-wrapper.properties`, update the gradle URL to `gradle-4.4-all.zip`
-2) In `android/build.gradle` check that you have `google()` specified in the buildScript repositories section:
+React Native version `0.56` is now the minimum supported version, it's recommended to upgrade to `0.57.x` if possible, otherwise `0.56` is also acceptable.
 
-```groovy
-buildscript {
-    repositories {
-        jcenter()
-        google()  // <-- Check this line exists
-        ...
-    }
-```
+#### Android - Update Firebase SDKs
 
-3) In `android/build.gradle` update Android build tools to version `{{ android.build.tools }}` and google services to version `{{ android.gms.google-services }}`:
-
-```groovy
-classpath 'com.android.tools.build:gradle:{{ android.build.tools }}'
-classpath 'com.google.gms:google-services:{{ android.gms.google-services }}'
-```
-
-4) In `android/app/build.gradle` update all your `compile` statements to be `implementation`, e.g.
-
-```groovy
-implementation(project(':react-native-firebase')) {
-    transitive = false
-}
-```
-
-5) In `android/app/build.gradle`, update all the firebase and gms dependencies to the following versions:
+1) In `android/app/build.gradle`, update all the firebase and gms dependencies to the following versions:
 
 - **com.google.android.gms:play-services-base**: {{ android.gms.play-services-base }}
 - **com.google.firebase:firebase-core**: {{ android.firebase.core }}
 - **com.google.firebase:firebase-ads**: {{ android.firebase.ads }}
 - **com.google.firebase:firebase-auth**: {{ android.firebase.auth }}
 - **com.google.firebase:firebase-config**: {{ android.firebase.config }}
-- **com.google.firebase:firebase-crash**: {{ android.firebase.crash }}
 - **com.google.firebase:firebase-database**: {{ android.firebase.database }}
+- **com.google.firebase:firebase-functions**: {{ android.firebase.functions }}
 - **com.google.firebase:firebase-invites**: {{ android.firebase.invites }}
 - **com.google.firebase:firebase-firestore**: {{ android.firebase.firestore }}
 - **com.google.firebase:firebase-messaging**: {{ android.firebase.messaging }}
@@ -181,56 +234,57 @@ implementation(project(':react-native-firebase')) {
 - **com.google.firebase:firebase-storage**: {{ android.firebase.storage }}
 - **com.crashlytics.sdk.android:crashlytics**:  {{ android.firebase.crashlytics }}
 
-6) When running your app from within Android Studio, you may encounter `Missing Byte Code` errors.  This is due to a known issue with version 3.1.x of the android tools plugin: https://issuetracker.google.com/issues/72811718.  You'll need to disable Instant Run to get past this error.
+#### iOS - Update Firebase SDKs
 
-### Messaging / Notifications
+v5.0.0 supports iOS SDK versions `5.8.0`, `5.8.1` & `5.9.0` - it's recommended to update to v5.9.0 and set the versions specifically in your `Podfile`:
 
-As you can imagine, for Messaging and Notifications this is a completely breaking change, so you'll want to follow the installation instructions available here:
-
-- Messaging: [iOS](https://rnfirebase.io/docs/v4.0.x/messaging/ios) | [Android](https://rnfirebase.io/docs/v4.0.x/messaging/android)
-- Notifications: [iOS](https://rnfirebase.io/docs/v4.0.x/notifications/ios) | [Android](https://rnfirebase.io/docs/v4.0.x/notifications/android)
-
-There are a number of guides available: [Messaging](https://rnfirebase.io/docs/v4.0.x/messaging/introduction) | [Notifications](https://rnfirebase.io/docs/v4.0.x/notifications/introduction)
-
-Reference can be found here: [Messaging](https://rnfirebase.io/docs/v4.0.x/messaging/reference/Messaging) | [Notifications](https://rnfirebase.io/docs/v4.0.x/notifications/reference/Notifications)
-
-Some key things to note:
-
-- The iOS `AppDelegate.m` will need to be completely updated
-- All packages in `AndroidManifest.xml` will need to be updated
-- `firebase.messaging().requestPermissions()` is now `firebase.messaging().requestPermission()`
-- `firebase.messaging().setBadgeNumber()` and `firebase.messaging().getBadgeNumber()` are now `firebase.notifications().setBadge()` and `firebase.notifications().getBadge()`
-
-### Dynamic Links
-
-- For dynamic links on iOS, you need to make a subtle change to your `AppDelegate.m`:
-
-```objectivec
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-            options:(NSDictionary<NSString *, id> *)options {
-    return [[RNFirebaseLinks instance] application:application openURL:url options:options];
-}
-
-- (BOOL)application:(UIApplication *)application
-continueUserActivity:(NSUserActivity *)userActivity
- restorationHandler:(void (^)(NSArray *))restorationHandler {
-     return [[RNFirebaseLinks instance] application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
-}
+```ruby
+  pod 'Firebase/AdMob', '~> 5.9.0'
+  pod 'Firebase/Auth', '~> 5.9.0'
+  pod 'Firebase/Core', '~> 5.9.0'
+  pod 'Firebase/Database', '~> 5.9.0'
+  pod 'Firebase/Functions', '~> 5.9.0'
+  pod 'Firebase/DynamicLinks', '~> 5.9.0'
+  pod 'Firebase/Firestore', '~> 5.9.0'
+  pod 'Firebase/Invites', '~> 5.9.0'
+  pod 'Firebase/Messaging', '~> 5.9.0'
+  pod 'Firebase/RemoteConfig', '~> 5.9.0'
+  pod 'Firebase/Storage', '~> 5.9.0'
+  pod 'Firebase/Performance', '~> 5.9.0'
+  
+  # Crashlytics
+  pod 'Fabric', '~> 1.7.11'
+  pod 'Crashlytics', '~> 3.10.7'
 ```
 
-### Crashlytics
+#### Crash Reporting
 
-- All Crashlytics methods have been moved from `firebase.fabric.crashlytics()` to `firebase.crashlytics()`
+ - Crash reporting has now removed from the library due to the previous deprecation - if you haven't already; you'll need to remove all usages of it.
+ 
+Crashlytics is the replacement service for crash reporting; see the following links for more information:
+ 
+ - [Firebase - Crashlytics Overview](https://firebase.google.com/docs/crashlytics/)
+ - [Crashlytics - React Native - iOS Install Guide](https://rnfirebase.io/docs/v5.x.x/crashlytics/ios)
+ - [Crashlytics - React Native - Android Install Guide](https://rnfirebase.io/docs/v5.x.x/crashlytics/android)
+ - [Crashlytics - React Native - Reference Docs](https://rnfirebase.io/docs/v5.x.x/crashlytics/reference/crashlytics)
 
-### Crash Reporting
+#### Other
 
-- Crash reporting is now flagged as deprecated.  We recommend you upgrade to Crashlytics which is now Firebase's recommended crash tool.
-
+ - Remove all usages of `firebase.auth().currentUser.getToken()` - use [ref auth.User#getIdToken] instead
+ - Remove  `"AndRetrieveData"` from all auth methods used in `auth()` and `auth().currentUser` methods;
+   - e.g. `signInAndRetrieveDataWithEmailAndPassword` becomes `signInWithEmailAndPassword` but still returns a [ref auth.UserCredential] instance as a result
+ - Replace all Performance Monitoring `Trace#incrementCounter` calls with [ref perf-mon.Trace#incrementMetric] 
+ 
 ----
 
 ## Feedback
 
-We want your feedback!!
+We want your feedback!
 
-If you have any comments and suggestions or want to report an issue, come find us on [Discord](https://discord.gg/C9aK28N)
+If you have any comments and suggestions or want to report an issue, come find us on [Discord](https://discord.gg/C9aK28N), [Twitter](https://twitter.com/rnfirebase) or [GitHub](https://github.com/invertase/react-native-firebase).
+
+## Contributing
+
+Thank to [all the contributors](https://github.com/invertase/react-native-firebase/graphs/contributors?from=2018-06-28&to=2018-09-26&type=c) that made this release happen 💛. 
+
+If you'd like to contribute please check out our new [testing](https://rnfirebase.io/docs/v5.x.x/testing) and [contributing](https://rnfirebase.io/docs/v5.x.x/contributing) guides.

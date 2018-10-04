@@ -24,11 +24,12 @@ When using transactions the following points should be kept in mind:
 This example demonstrates incrementing a number transactionally even if a doc does not already exist and then returning the new value as the transaction result.
 
 ```javascript
-import { firestore } from 'react-native-firebase';
+import firebase from 'react-native-firebase';
 
-const ref = firestore.collection('cities').doc('London');
+const ref = firebase.firestore().collection('cities').doc('London');
 
-firestore
+firebase
+  .firestore()
   .runTransaction(async transaction => {
     const doc = await transaction.get(ref);
 
@@ -65,11 +66,12 @@ firestore
 This example extends on the previous example and aborts the transaction if the population is greater than 5.
 
 ```javascript
-import { firestore } from 'react-native-firebase';
+import firebase from 'react-native-firebase';
 
-const ref = firestore.collection('cities').doc('London');
+const ref = firebase.firestore().collection('cities').doc('London');
 
-firestore
+firebase
+  .firestore()
   .runTransaction(async transaction => {
     const doc = await transaction.get(ref);
 
@@ -116,12 +118,12 @@ This is an advanced example that demonstrates multiple reads and writes on multi
 In this example we will increment the population of `London` and increment the population of the `United Kingdom` based on the totals of the cities.
 
 ```javascript
-import { firestore } from 'react-native-firebase';
+import firebase from 'react-native-firebase';
 
-const refA = firestore.collection('cities').doc('London');
-const refB = firestore.collection('cities').doc('Manchester');
-const refC = firestore.collection('cities').doc('Nottingham');
-const refD = firestore.collection('countries').doc('United Kingdom');
+const refA = firebase.firestore().collection('cities').doc('London');
+const refB = firebase.firestore().collection('cities').doc('Manchester');
+const refC = firebase.firestore().collection('cities').doc('Nottingham');
+const refD = firebase.firestore().collection('countries').doc('United Kingdom');
 
 const updateFunction = async transaction => {
   const [londDoc, mancDoc, nottDoc, ukDoc] = await Promise.all([
@@ -167,7 +169,8 @@ const updateFunction = async transaction => {
 };
 
 // run the transaction
-firestore
+firebase
+  .firestore()
   .runTransaction(updateFunction)
   .then(result => {
     console.log(result);
