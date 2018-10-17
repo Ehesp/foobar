@@ -23,3 +23,8 @@ Run `pod update`.
 ```groovy
 "${PODS_ROOT}/Fabric/run"
 ```
+### Xcode 10 only: Add your app's built Info.plist location to the Build Phase's Input Files field:
+
+```
+$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)
+```
