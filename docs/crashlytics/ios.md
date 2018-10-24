@@ -22,9 +22,43 @@ Run `pod update`.
 3. Click **+ Add a new build phase**, and select **New Run Script Phase**.
 4. Add the following line to the **Type a script..** text box:
 
-```groovy
-"${PODS_ROOT}/Fabric/run"
+```diff
+"${PODS_ROOT}/Fabric/run" <YOUR_API_KEY> <YOUR_BUILD_SECRET>
 ```
+
+### Add your API key to Info.plist
+```diff
+  ...
++  <key>Fabric</key>
++  <dict>
++    <key>APIKey</key>
++    <string>YOUR_API_KEY_HERE</string>
++    <key>Kits</key>
++    <array>
++      <dict>
++        <key>KitInfo</key>
++        <dict/>
++        <key>KitName</key>
++        <string>Crashlytics</string>
++      </dict>
++    </array>
++  </dict>
+```
+
+### Initialize Your Crashlytics
+```diff
+...
++#import <Fabric/Fabric.h>
++#import <Crashlytics/Crashlytics.h>
+...
+@implementation AppDelegate
+ - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions }
++    [Fabric with:@[[Crashlytics class]]];
+    return YES;
+}
+@end
+```
+Fabric document: <a href='https://www.fabric.io/kits/ios/crashlytics/install' >IOS</a>, <a href='https://www.fabric.io/kits/android/crashlytics/install' >Android</a>
 
 ## Manual
 
