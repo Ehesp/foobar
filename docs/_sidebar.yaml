@@ -199,6 +199,7 @@
     - type: divider
     - type: reference
       files:
+      - IOSMessaging
       - Messaging
       - RemoteMessage
   - title: Core / App
