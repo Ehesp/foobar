@@ -12,7 +12,7 @@ This `messaging` module deals with pure data-only messages only.  If you're inte
 
 [method]ios returns [ref messaging.IOSMessaging];[/method]
 
-Gets the iOS specific properties of the messaging.
+Gets the iOS specific methods and properties of messaging.
 
 ## Methods
 
