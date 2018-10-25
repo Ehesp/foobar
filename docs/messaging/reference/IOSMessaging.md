@@ -1,6 +1,6 @@
-# IOSMessanging
+# IOSMessaging
 
-iOS specific messanging / APNS properties.
+iOS specific messaging / APNS properties.
 
 ## Methods
 
