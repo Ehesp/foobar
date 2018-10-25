@@ -59,7 +59,7 @@ Parameter |         |
 
 Notification permissions are required to send a user push messages. Calling this method displays the permission dialog to the user and resolves if the permission is granted.
 
-After granted the permission, calling [ref messaging.IOSMessaging#registerForRemoteNotifications] will sync your app's apns token with firebase on demand.
+After granting the permission, calling [ref messaging.IOSMessaging#registerForRemoteNotifications] will sync your app's apns token with firebase on demand.
 
 Returns a promise that resolves if permission is granted, otherwise, it is rejected with an error.
 
