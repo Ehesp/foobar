@@ -4,7 +4,7 @@ Firebase Cloud Messaging ([FCM](https://firebase.google.com/docs/cloud-messaging
 
 This `messaging` module deals with pure data-only messages only.  If you're interested in sending and receiving notifications, please take a look at the [ref notifications.Notifications] module.
 
-!> On iOS, your app first needs to have [ref Messaging#requestPermission] in order to receive Cloud Messages.
+!> On iOS, your app first needs to have [ref Messaging#requestPermission] in order to receive Cloud Messages. After granted the permission, calling [ref messaging.IOSMessaging#registerForRemoteNotifications] will sync your app's apns token with firebase on demand.
 
 ## Properties
 
