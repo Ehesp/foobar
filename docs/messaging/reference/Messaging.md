@@ -6,6 +6,14 @@ This `messaging` module deals with pure data-only messages only.  If you're inte
 
 !> On iOS, your app first needs to have [ref Messaging#requestPermission] in order to receive Cloud Messages.
 
+## Properties
+
+### ios
+
+[method]ios returns [ref messaging.IOSMessaging];[/method]
+
+Gets the iOS specific properties of the messaging.
+
 ## Methods
 
 The following methods are accessed via the Cloud Messaging instance `firebase.messaging()`.
