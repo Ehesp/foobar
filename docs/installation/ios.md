@@ -6,9 +6,7 @@
 
 A `GoogleService-Info.plist` file contains all of the information required by the Firebase iOS SDK to connect to your Firebase project. To automatically generate the plist file, [follow the instructions](https://firebase.google.com/docs/ios/setup#add_firebase_to_your_app) on the Firebase console to "Add Firebase to your app".
 
-Once downloaded, place the file in the root of your iOS app at `ios/[YOUR APP NAME]/GoogleService-Info.plist`.
-
-Make sure that the `GoogleService-Info.plist` file has been added to your project within XCode.
+Once downloaded, add the file to your iOS app using 'File > Add Files to "\[YOUR APP NAME]"...' in XCode.
 
 ### 1.2. Initialise Firebase
 
