@@ -223,6 +223,8 @@
     - to: "/android"
       text: Install on Android
       icon: android
+    - to: "/manual-initialization"
+      text: Manual Initialization
     - type: divider
     - type: reference
       files:

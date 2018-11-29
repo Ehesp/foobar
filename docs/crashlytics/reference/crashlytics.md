@@ -84,3 +84,8 @@ Set the user ID to show alongside any subsequent crash reports.
 | Parameter |     |
 | --------- | --- |
 | userId    | **string** <br /> The user's ID. |
+
+### enableCrashlyticsCollection
+[method]enableCrashlyticsCollection() returns void;[/method]
+
+Enable Crashlytics reporting. Only avaliable when [disabled automatic initialization](../manual-initialization).
