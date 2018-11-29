@@ -4,16 +4,16 @@ By default, Firebase Crashlytics automatically collects crash reports for all yo
 
 To do that, you have to disable automatic collection and initialize Crashlytics only for opt-in users.
 
-## Disable automatic initialization
+## 1) Disable automatic initialization
 
-### iOS
+### iOS:
 
 Turn off automatic collection with a new key to your `Info.plist` file:
 
 * Key: `firebase_crashlytics_collection_enabled`
 * Value: `false`
 
-### Android
+### Android:
 
 Turn off automatic collection with a meta-data tag in your `AndroidManifest.xml` file:
 
@@ -23,7 +23,9 @@ Turn off automatic collection with a meta-data tag in your `AndroidManifest.xml`
     android:value="false" />
 ```
 
-## Enable collection by initializing Crashlytics at runtime
+## 2) Enable collection at runtime
+
+Initializing Crashlytics in your js code:
 
 ```js
 firebase.crashlytics().enableCrashlyticsCollection();
