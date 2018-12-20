@@ -64,7 +64,7 @@ Run `pod update`.
 
         - (BOOL)application:(UIApplication *)application
         continueUserActivity:(NSUserActivity *)userActivity
-         restorationHandler:(void (^)(NSArray *))restorationHandler {
+         restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> *restorableObjects))restorationHandler {
              return [[RNFirebaseLinks instance] application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
         }
         ```
