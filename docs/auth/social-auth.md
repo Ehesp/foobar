@@ -81,7 +81,7 @@ You can use react-native-twitter-signin for Twitter authentication. This library
 
 The`react-native-twitter-signin` library allows us to login (using `RNTwitterSignIn`) which returns `authToken` and `authTokenSecret`
 
-Make sure you thorougly follow the instructions on setting up the necessary requirements to get react-native-twitter-signin working.
+Make sure you thoroughly follow the instructions on setting up the necessary requirements to get `react-native-twitter-signin` working.
 
 
 ```js
