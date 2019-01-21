@@ -96,7 +96,7 @@ const TwitterKeys = {
 }
 
 export const signinTwitter = async = () => { 
-    RNTwitterSignin.init(TwitterKeys.TWITTER_CONSUMER_KEY, TwitterKeys.TWITTER_CONSUMER_SECRET);
+    RNTwitterSignIn.init(TwitterKeys.TWITTER_CONSUMER_KEY, TwitterKeys.TWITTER_CONSUMER_SECRET);
     
     try {
       const result = await RNTwitterSignIn.logIn();
