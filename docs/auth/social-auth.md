@@ -85,7 +85,7 @@ Make sure you thorougly follow the instructions on setting up the necessary requ
 
 
 ```js
-import {NativeModules} from 'react-native}
+import { NativeModules } from 'react-native';
 import firebase from 'react-native-firebase';
 
 const {RNTwitterSignIn} = NativeModules;
