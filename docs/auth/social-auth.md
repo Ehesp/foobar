@@ -90,7 +90,7 @@ import firebase from 'react-native-firebase';
 
 const {RNTwitterSignIn} = NativeModules;
 
-const TwittrKeys = {
+const TwitterKeys = {
    TWITTER_CONSUMER_KEY: 'PLACE_YOUR_TWITTER_CONSUMER_KEY_HERE'
    TWITTER_CONSUMER_SECRET: 'PLACE_YOUR_TWITTER_CONSUMER_SECRET_HERE'
 }
