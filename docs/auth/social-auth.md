@@ -101,7 +101,7 @@ export const signinTwitter = async = () => {
     try {
       const result = await RNTwitterSignIn.logIn();
     
-    const credential = firebase.auth.TwitterAuthProvider.credential(result.authToken, result.authTokenSecret);
+      const credential = firebase.auth.TwitterAuthProvider.credential(result.authToken, result.authTokenSecret);
     
       await firebase.auth().signInWithCredential(credential);
     
