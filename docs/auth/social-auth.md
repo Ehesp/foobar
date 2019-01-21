@@ -93,7 +93,7 @@ const {RNTwitterSignIn} = NativeModules;
 const TwitterKeys = {
    TWITTER_CONSUMER_KEY: 'PLACE_YOUR_TWITTER_CONSUMER_KEY_HERE',
    TWITTER_CONSUMER_SECRET: 'PLACE_YOUR_TWITTER_CONSUMER_SECRET_HERE'
-}
+};
 
 export const signinTwitter = async = () => { 
     RNTwitterSignIn.init(TwitterKeys.TWITTER_CONSUMER_KEY, TwitterKeys.TWITTER_CONSUMER_SECRET);
