@@ -99,7 +99,7 @@ export const signinTwitter = async = () => {
     RNTwitterSignin.init(TwitterKeys.TWITTER_CONSUMER_KEY, TwitterKeys.TWITTER_CONSUMER_SECRET);
     
     try {
-    const result = await RNTwitterSignIn.logIn();
+      const result = await RNTwitterSignIn.logIn();
     
     const credential = firebase.auth.TwitterAuthProvider.credential(result.authToken, result.authTokenSecret);
     
