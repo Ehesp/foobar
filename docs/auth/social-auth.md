@@ -77,7 +77,7 @@ export const googleLogin = async () => {
 ```
 
 ## Twitter
-You can use react-native-twitter-signin for Twitter authentication. This library handles the flow of logging in a user and accesssing their `authToken` and `authTokenSecrent` by wrapping around the official Twitter library.
+You can use `react-native-twitter-signin` for Twitter authentication. This library handles the flow of logging in a user and accessing their `authToken` and `authTokenSecret` by wrapping around the official Twitter library.
 
 The`react-native-twitter-signin` library allows us to login (using `RNTwitterSignIn`) which returns `authToken` and `authTokenSecret`
 
