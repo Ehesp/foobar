@@ -77,6 +77,38 @@ export const googleLogin = async () => {
 ```
 
 ## Twitter
+You can use react-native-twitter-signin for Twitter authentication. This library handles the flow of logging in a user and accesssing their `authToken` and `authTokenSecrent` by wrapping around the official Twitter library.
+
+The`react-native-twitter-signin` library allows us to login (using `RNTwitterSignIn`) which returns `authToken` and `authTokenSecret`
+
+Make sure you thorougly follow the instructions on setting up the necessary requirements to get react-native-twitter-signin working.
+
+
+```js
+import {NativeModules} from 'react-native}
+import firebase from 'react-native-firebase';
+
+const {RNTwitterSignIn} = NativeModules;
+
+const TwittrKeys = {
+   TWITTER_CONSUMER_KEY: 'PLACE_YOUR_TWITTER_CONSUMER_KEY_HERE'
+   TWITTER_CONSUMER_SECRET: 'PLACE_YOUR_TWITTER_CONSUMER_SECRET_HERE'
+}
+
+export const signinTwitter = async = () => { 
+    RNTwitterSignin.init(TwitterKeys.TWITTER_CONSUMER_KEY, TwitterKeys.TWITTER_CONSUMER_SECRET);
+    
+    try {
+    const result = await RNTwitterSignIn.logIn();
+    
+    const credential = firebase.auth.TwitterAuthProvider.credential(result.authToken, result.authTokenSecret);
+    
+    await firebase.auth().signInWithCredential(credential);
+    
+    } catch (error) {
+      return error;
+    }
+```
 
 ## Github
 
