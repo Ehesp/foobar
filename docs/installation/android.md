@@ -96,6 +96,29 @@ allprojects {
 }
 ```
 
+### Install the RNFirebase package
+
+Add the `RNFirebasePackage` to your `android/app/src/main/java/com/[app name]/MainApplication.java`:
+
+```java
+// ...
+import io.invertase.firebase.RNFirebasePackage; // <-- Add this line
+
+public class MainApplication extends Application implements ReactApplication {
+    // ...
+
+    @Override
+    protected List<ReactPackage> getPackages() {
+      return Arrays.<ReactPackage>asList(
+          new MainReactPackage(),
+          new RNFirebasePackage() // <-- Add this line
+      );
+    }
+  };
+  // ...
+}
+```
+
 ### Using with Proguard enabled
 
 When using react-native-firebase with Proguard enabled (`minifyEnabled true in android/app/build.gradle`) you need to update your proguard-rules.pro file (`android/app/proguard-rules.pro`) to include the following lines:
