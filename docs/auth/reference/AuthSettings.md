@@ -10,7 +10,7 @@ In order to use this feature, you will need to [whitelist your phone number](htt
 
 ?> These are for testing purposes, ensure you're not using them in the public release version of your app.
 
-An example use in e2e testing can be seen in our tests suite [here](https://github.com/invertase/react-native-firebase/blob/master/tests/e2e/auth/phone.e2e.js).
+An example use in e2e testing can be seen in our tests suite [here](https://github.com/invertase/react-native-firebase/blob/v5.x.x/tests/e2e/auth/phone.e2e.js).
 
 ## Properties
 
