@@ -110,7 +110,7 @@ Working on your first Pull Request? You can learn how from this _free_ series, [
 
 ### Testing Code
 
-The project has a detox powered `e2e` testing app located in `/tests`. See it's local testing guide [here](https://github.com/invertase/react-native-firebase/blob/master/tests/README.md).
+The project has a detox powered `e2e` testing app located in `/tests`. See it's local testing guide [here](https://github.com/invertase/react-native-firebase/blob/v5.x.x/tests/README.md).
 
 ### Submitting code for review
 
