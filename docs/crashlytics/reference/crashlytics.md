@@ -14,7 +14,7 @@ The following methods are accessed via the Crashlytics instance `firebase.crashl
 
 [method]crash() returns void;[/method]
 
-Forces a crash. Useful for testing your application is set up correctly.
+Forces a native crash. Useful for testing your application is set up correctly.
 
 ### log
 
@@ -22,9 +22,18 @@ Forces a crash. Useful for testing your application is set up correctly.
 
 Logs a message that will be sent with any subsequent crash reports.
 
+`recordError` or `recordCustomError` must be called after `log`.
+
 | Parameter |         |
 | --------- | ------- |
 | message   | **string** |
+
+#### Example
+
+```js
+firebase.crashlytics().log('Test Message!');
+firebase.crashlytics().recordError(37,"Test Error");
+```
 
 ### recordError
 
