@@ -28,7 +28,7 @@ Logs a message that will be sent with any subsequent crash reports.
 | --------- | ------- |
 | message   | **string** |
 
-#### Example
+***Example***
 
 ```js
 firebase.crashlytics().log('Test Message!');
@@ -58,11 +58,11 @@ Logs a custom non fatal exception to Crashlytics.
 
 | Parameter |     |
 | --------- | --- |
-| name      | **number** <br /> The error title. |
+| name      | **string** <br /> The error title. |
 | message   | **string** <br /> The error message. |
-| stack   | **customError[]** *Optional* <br /> Array of the custom stack traces for the error. |
+| stack   | **customError[]** *Optional* <br /> Array of the custom stack traces for the error. <br /> See [Custom Error Type](#custom-error-type).  |
 
-#### Example
+***Example***
 
 ```js
 firebase.crashlytics().recordCustomError(
@@ -92,7 +92,7 @@ The type for the custom stack trace.
 | className   | **string** *Optional*<br /> The name of the class. If `undefined` will be "Unknown Class" |
 | functionName   | **string** *Optional*<br /> The name of the function. If `undefined` will be "Unknown Function"|
 | lineNumber   | **number** *Optional*<br /> The line number of the error. If `undefined` will be -1|
-| additional   | **Object** *Optional*<br /> Additional data you would like to include in the stack trace.|
+| additional   | **Object** *Optional*<br /> Additional data you would like to include in the stack trace.<br/>See [recordCustomError](#recordCustomError) for an example.|
 
 ### setBoolValue
 
@@ -147,6 +147,26 @@ Set the user ID to show alongside any subsequent crash reports.
 | Parameter |     |
 | --------- | --- |
 | userId    | **string** <br /> The user's ID. |
+
+### setUserName
+
+[method]setUserName(userName) returns void;[/method]
+
+Set the user ID to show alongside any subsequent crash reports.
+
+| Parameter |     |
+| --------- | --- |
+| userName    | **string** <br /> The user's name. |
+
+### setUserEmail
+
+[method]setUserEmail(userEmail) returns void;[/method]
+
+Set the user ID to show alongside any subsequent crash reports.
+
+| Parameter |     |
+| --------- | --- |
+| userEmail    | **string** <br /> The user's email address. |
 
 ### enableCrashlyticsCollection
 
