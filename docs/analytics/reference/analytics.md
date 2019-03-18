@@ -19,6 +19,8 @@ Note: up to 100 characters is the maximum character length supported for event p
 | event   | **string**  |
 | params   | **object**  |
 
+** 'event' name is casesensitive 
+
 ### setAnalyticsCollectionEnabled
 [method]setAnalyticsCollectionEnabled(enabled) returns void;[/method]
 
