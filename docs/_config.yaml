@@ -1,6 +1,6 @@
 android:
   build:
-    tools: 3.2.1
+    tools: 3.3.2
   fabric:
     tools: 1.25.4
     version: 2.9.5
@@ -8,7 +8,7 @@ android:
     version: 16.0.8
     ads: 15.0.1
     analytics: 16.4.0
-    auth: 16.2.0
+    auth: 16.2.1
     config: 16.4.1
     core: 16.0.8
     crashlytics: 2.9.5
