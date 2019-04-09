@@ -9,7 +9,7 @@ android:
     ads: 15.0.1
     analytics: 16.4.0
     auth: 16.2.1
-    config: 16.4.1
+    config: 16.5.0
     core: 16.0.8
     crashlytics: 2.9.5
     database: 16.1.0
@@ -17,7 +17,7 @@ android:
     functions: 16.3.0
     invites: 16.1.1
     messaging: 17.5.0
-    perf: 16.2.4
+    perf: 16.2.5
     storage: 16.1.0
     plugins: 1.1.5
   gms:
