@@ -134,7 +134,7 @@
     - to: "/transactions"
       text: Transactions
       icon: info-circle-o
-    - to: "https://medium.com/@elliothesp/b338fb6525b9"
+    - to: "https://invertase.io/blog/getting-started-with-cloud-firestore-on-react-native"
       text: Building a TODO app
       type: external
       icon: info-circle-o
@@ -157,6 +157,7 @@
       - SetOptions
       - Settings
       - SnapshotMetadata
+      - Timestamp
       - Transaction
       - WriteBatch
   - title: Cloud Functions
