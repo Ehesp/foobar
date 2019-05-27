@@ -52,7 +52,7 @@ We provide several options for you to get started with React Native Firebase, se
 
 > The table below shows the supported versions of React Native and the Firebase SDKs for different versions of `react-native-firebase`
 
-|                           |  3.3.x   |       5.2.x        |       5.3.x       |
+|                           |  3.3.x   |       5.2.x        |       5.4.x       |
 | ------------------------- | :------: | :----------------: | :---------------: |
 | React Native              | 0.50-52  |      0.52-58       |      ^0.59.3      |
 | Play Services Android SDK | 11.8.0 + |      ^16.1.0       |      ^16.1.0      |
