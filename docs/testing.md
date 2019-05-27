@@ -1,6 +1,6 @@
 # Testing
 
-> The tests project is located on the main repository in [/tests](https://github.com/invertase/react-native-firebase/tree/master/tests).
+> The tests project is located on the main repository in [/tests](https://github.com/invertase/react-native-firebase/tree/v5.x.x/tests).
 
 Our tests are powered by [Jet ✈️](https://github.com/invertase/jet).
 
