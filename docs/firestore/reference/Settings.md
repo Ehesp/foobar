@@ -14,6 +14,13 @@ The hostname to connect to.
 
 Whether to use persistence.
 
+### cacheSizeBytes
+[method]cacheSizeBytes returns nullable number;[/method]
+
+Sets an approximate cache size threshold for the on-disk data. If the cache grows beyond this size, Firestore will start removing data that hasn't been recently used. The size is not a guarantee that the cache will stay below that size, only that if the cache exceeds the given size, cleanup will be attempted.
+
+The default value is 100 MB. The threshold must be set to at least 1 MB, and can be set to -1 to disable garbage collection.
+
 ### ssl
 [method]ssl returns nullable boolean;[/method]
 
