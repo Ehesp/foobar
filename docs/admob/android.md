@@ -37,3 +37,20 @@ public class MainApplication extends Application implements ReactApplication {
   // ...
 }
 ```
+
+## Enable Legacy HTTP Library in AndroidManifest
+
+Android 9.0 removed by default all traces of the old Apache HTTP library. However, it seems that some libraries need it. You need to add this to your manifest inside the <application> element to enable legacy HTTP Library.
+  
+`<uses-library
+    android:name="org.apache.http.legacy"
+    android:required="false"/>`
+    
+```
+
+<application
+      <uses-library android:name="org.apache.http.legacy" android:required="false"/>  // <-- Add this line 
+</application>
+
+```
+
