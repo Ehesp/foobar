@@ -4,7 +4,7 @@
 firebase.perf
 ```
 
-?> **Upcoming Change:** Note that this API is likely to change in v5.1.0 to convert all Trace / HttpMetric methods (except start & stop) to be synchronous JS side methods. The API implemented currently is an initial draft to allow early access.
+?> **Upcoming Change:** Note that this API is likely to change in v6.0.0 to convert all Trace / HttpMetric methods (except start & stop) to be synchronous JS side methods. The API implemented currently is an initial draft to allow early access.
 
 Firebase Performance Monitoring captures a number of traces automatically, such as all outbound HTTP requests, app boot time and more.
 

@@ -27,3 +27,10 @@ Returns a special value that can be used with set() or update() that tells the s
 [methods]arrayRemove(...var_args) returns [ref firestore.FieldValue];[/methods]
 
 Returns a special value that can be used with set() or update() that tells the server to remove the given elements from any array value that already exists on the server.
+
+### increment
+[methods]increment(n: number) returns [ref firestore.FieldValue];[/methods]
+
+Returns a special value that can be used with set() or update() that tells the server to increment the field's current value by the given value.
+
+If the current field value is not of type number, or if the field does not yet exist, the transformation sets the field to the given value.

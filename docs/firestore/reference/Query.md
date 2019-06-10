@@ -23,7 +23,7 @@ Creates a new query where the results end at the provided document (inclusive). 
 ### endBefore
 [method]endBefore(snapshotOrVarArgs) returns [ref firestore.Query];[/method]
 
-Creates a new query where the results end at the provided document (inclusive). The end position is relative to the order of the query. The document must contain all of the fields provided in the orderBy of this query.
+Creates a new query where the results end before the provided document (exclusive). The end position is relative to the order of the query. The document must contain all of the fields provided in the orderBy of this query.
 
 | Parameter |         |
 | --------- | ------- |

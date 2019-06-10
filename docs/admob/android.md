@@ -37,3 +37,19 @@ public class MainApplication extends Application implements ReactApplication {
   // ...
 }
 ```
+
+## Update Android Manifest
+
+Add the following to `android/app/src/main/AndroidManifest.xml`:
+
+Within the application component, add your AdMob ID (from the AdMob UI):
+```xml
+<application ...>
+  <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+  <meta-data
+    android:name="com.google.android.gms.ads.APPLICATION_ID"
+    android:value="YOUR_ADMOB_APP_ID"/>
+</application>
+```
+
+> Important: This step is required as of Google Mobile Ads SDK version 17.0.0. Failure to add this `<meta-data>` tag results in a crash with the message: "The Google Mobile Ads SDK was initialized incorrectly."
