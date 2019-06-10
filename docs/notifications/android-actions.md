@@ -51,7 +51,7 @@ const notification = new firebase.notifications.Notification()
 const action = new firebase.notifications.Android.Action('test_action', 'ic_launcher', 'My Test Action');
 
 // Build a remote input
-const remoteInput = new RNfirebase.notifications.Android.RemoteInput('inputText')
+const remoteInput = new firebase.notifications.Android.RemoteInput('inputText')
   .setLabel('Message');
 
 // Add the remote input to the action
