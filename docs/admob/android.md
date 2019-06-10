@@ -38,19 +38,27 @@ public class MainApplication extends Application implements ReactApplication {
 }
 ```
 
-## Enable Legacy HTTP Library in AndroidManifest
+## Update Android Manifest
 
-Android 9.0 removed by default all traces of the old Apache HTTP library. However, it seems that some libraries need it. You need to add this to your manifest inside the <application> element to enable legacy HTTP Library.
+You must add your AdMob App Id to your AndroidManfest
+
+Android 9.0 removed by default all traces of the old Apache HTTP library. However, some libraries like Admob still need it until they are updated. 
+You need to alter to your manifest inside the `<application>` element to enable legacy HTTP Library.
+
+Add the following to `android/app/src/main/AndroidManifest.xml`:
+
+Within the application component, add your AdMob ID (from the AdMob UI):
+```xml
+<application ...>
   
-`<uses-library
-    android:name="org.apache.http.legacy"
-    android:required="false"/>`
-    
-```
-
-<application
-      <uses-library android:name="org.apache.http.legacy" android:required="false"/>  // <-- Add this line 
+  <!-- Add this line as part of new AdMob library process. Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+  <meta-data
+    android:name="com.google.android.gms.ads.APPLICATION_ID"
+    android:value="YOUR_ADMOB_APP_ID"/>
+  
+  <uses-library android:name="org.apache.http.legacy" android:required="false"/>  <!-- Add this line to avoid crashes on Android 9 until AdMob SDK update -->
+  
 </application>
-
 ```
 
+> Important: This AdmOb ID is required as of Google Mobile Ads SDK version 17.0.0. Failure to add this `<meta-data>` tag results in a crash with the message: "The Google Mobile Ads SDK was initialized incorrectly."

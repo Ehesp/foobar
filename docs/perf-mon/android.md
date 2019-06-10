@@ -13,14 +13,16 @@ dependencies {
 }
 ```
 
-Performance Monitoring also requires the Firebase Plugins dependency. In your projects `android/build.gradle` file, add the plugin to your dependencies:
+Performance Monitoring also requires the Firebase Perf Plugins dependency. In your projects `android/build.gradle` file, add the plugin to your dependencies:
 
 ```groovy
 dependencies {
   // ...
-  classpath 'com.google.firebase:firebase-plugins:{{ android.firebase.plugins }}'
+  classpath 'com.google.firebase:perf-plugin:{{ android.firebase.plugins }}'
 }
 ```
+
+!> Warning: the plugin dependency changed to `perf-plugin` from `firebase-plugins` with the move to version 1.2. You must update your `android/build.gradle` to use it.
 
 At the top of your `android/app/build.gradle` file, below other plugins, apply the `firebase-perf` plugin:
 

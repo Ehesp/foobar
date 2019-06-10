@@ -72,7 +72,7 @@ For feature requests please visit our [Feature Request Board](https://boards.inv
 
 ## Changelog
 
-Detailed changes for each release are documented in the [releases notes](https://github.com/invertase/react-native-firebase/releases).
+Detailed changes for each release are documented in the [release notes](/docs/v5.x.x/release-notes).
 
 ## Contributing
 
