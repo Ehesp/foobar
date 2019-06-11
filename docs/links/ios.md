@@ -70,7 +70,7 @@ Run `pod update`.
         ```
 
     > You might run into situation when you need to handle more than one link configuration
-    > i.e. when using Facebook SDK to handle push notification / login links
+    > i.e. when using react native linking for deeplinks
     > if that is the case you can perform check below
 
     ```objectivec
@@ -78,11 +78,24 @@ Run `pod update`.
     openURL:(NSURL *)url 
     options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     
-        BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+        BOOL handled = [RCTLinkingManager application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
         
         if (!handled) {
             handled = [[RNFirebaseLinks instance] application:application openURL:url options:options];
         } 
+
+        return handled;
+    }
+
+    - (BOOL)application:(UIApplication *)application
+    continueUserActivity:(NSUserActivity *)userActivity
+    restorationHandler:(void (^)(NSArray *))restorationHandler {
+
+        BOOL handled = [RCTLinkingManager application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
+
+        if (!handled) {
+        handled = [[RNFirebaseLinks instance] application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
+        }
 
         return handled;
     }
