@@ -18,7 +18,7 @@ Starting loading an interstial from the Firebase servers with a given [ref admob
 | request   | **[ref admob.AdRequest#build]** <br /> An AdRequest.build object |
 
 ### on
-[method]loadAd(event, callback) returns void;[/method]
+[method]on(event, callback) returns void;[/method]
 
 Listens for advert events. See [EventTypes](version /admob/reference#eventtypes) for more information.
 
