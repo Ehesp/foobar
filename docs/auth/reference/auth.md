@@ -556,8 +556,11 @@ firebase.auth()
 
 | Code | Message |
 | --------- | ------- |
-| auth/invalid-email  | Thrown if the email address is not valid. |
-| auth/user-not-found | Thrown if there is no user corresponding to the email address. |
+| auth/captcha-check-failed  | Thrown if the reCAPTCHA response token was invalid, expired, or if this method was called from a non-whitelisted domain. |
+| auth/invalid-phone-number | Thrown if the phone number has an invalid format. |
+| auth/missing-phone-number | Thrown if the phone number is missing. |
+| auth/quota-exceeded | Thrown if the SMS quota for the Firebase project has been exceeded. |
+| auth/user-disabled | Thrown if the user corresponding to the given phone number has been disabled. |
 
 ### sendPasswordResetEmail
 [method]sendPasswordResetEmail(email, actionCodeSettings) returns Promise containing void;[/method]

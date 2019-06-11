@@ -1,44 +1,42 @@
 android:
   build:
-    tools: 3.2.0
+    tools: 3.3.2
   fabric:
-    tools: 1.25.4
-    version: 2.9.5
+    tools: 1.28.1
   firebase:
-    version: 16.0.4
-    ads: 15.0.1
-    analytics: 16.0.4 # part of core ??
-    auth: 16.0.5
-    config: 16.1.0
-    core: 16.0.4
-    crashlytics: 2.9.5
-    database: 16.0.4
-    firestore: 17.1.2
-    functions: 16.1.2
-    invites: 16.0.4
-    messaging: 17.3.4
-    perf: 16.2.0
-    storage: 16.0.4
-    plugins: 1.1.5
+    version: 16.0.9
+    ads: 17.2.1
+    analytics: 16.5.0
+    auth: 17.0.0
+    config: 17.0.0
+    core: 16.0.9
+    crashlytics: 2.9.9
+    database: 17.0.0
+    firestore: 19.0.0
+    functions: 17.0.0
+    invites: 17.0.0
+    messaging: 18.0.0
+    perf: 16.2.5
+    storage: 17.0.0
+    plugins: 1.2.1
   gms:
-    google-services: 4.0.1
-    play-services-base: 16.0.1
+    google-services: 4.2.0
+    play-services-base: 16.1.0
 ios:
   fabric:
-    tools: 1.7.13
-    version: 3.10.9
+    tools: 1.10.1
   firebase:
-    ads: 5.11.0
-    auth: 5.11.0
-    config: 5.11.0
-    core: 5.11.0
-    crash: 5.11.0
-    crashlytics: 3.10.7
-    database: 5.11.0
-    firestore: 5.11.0
-    functions: 5.11.0
-    invites: 5.11.0
-    links: 5.11.0
-    messaging: 5.11.0
-    perf: 5.11.0
-    storage: 5.11.0
+    ads: 5.20.2
+    auth: 5.20.2
+    config: 5.20.2
+    core: 5.20.2
+    crash: 5.20.2
+    crashlytics: 3.13.1
+    database: 5.20.2
+    firestore: 5.20.2
+    functions: 5.20.2
+    invites: 5.20.2
+    links: 5.20.2
+    messaging: 5.20.2
+    perf: 5.20.2
+    storage: 5.20.2

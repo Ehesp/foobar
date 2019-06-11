@@ -6,6 +6,8 @@
       text: Getting Started
     - to: "/release-notes"
       text: Release Notes
+    - to: "/about"
+      text: About
   - title: Installation
     links:
     - to: "/installation/initial-setup"
@@ -132,7 +134,7 @@
     - to: "/transactions"
       text: Transactions
       icon: info-circle-o
-    - to: "https://medium.com/@elliothesp/b338fb6525b9"
+    - to: "https://invertase.io/blog/getting-started-with-cloud-firestore-on-react-native"
       text: Building a TODO app
       type: external
       icon: info-circle-o
@@ -155,6 +157,7 @@
       - SetOptions
       - Settings
       - SnapshotMetadata
+      - Timestamp
       - Transaction
       - WriteBatch
   - title: Cloud Functions
@@ -223,6 +226,8 @@
     - to: "/android"
       text: Install on Android
       icon: android
+    - to: "/manual-initialization"
+      text: Manual Initialization
     - type: divider
     - type: reference
       files:

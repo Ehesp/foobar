@@ -125,6 +125,8 @@ Whilst we do not recommend using `react-native-firebase` as a Pod, it is possibl
 
 This is a restriction of Cocoapods and how it interacts with Dynamic Frameworks such as Firebase.
 
+> The upcoming v6 release supports `use_frameworks!` by default and modules are distrubted as static frameworks. [Learn more here](https://github.com/invertase/react-native-firebase/issues/2025). 
+
 #### Why do we not recommend a pod installation?
 
 Our preference would definitely be to make use of Cocoapods for both Firebase and React Native Firebase and indeed, this did use to be our recommended approach.

@@ -173,6 +173,7 @@ Path must be a full file path to a file on the device.
 | Parameter |         |
 | --------- | ------- |
 | filePath  | **string**  |
+| metadata  | **object** (optional)  |
 
 **Returns:** A thenable `UPLOAD` [ref storage.StorageTask] to track upload progress.
 

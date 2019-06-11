@@ -2,6 +2,8 @@
 
 First ensure you have followed the [initial setup guide](version /installation/initial-setup).
 
+?> If you're migrating from Fabric ensure you **remove the `fabric.properties` file** from your android project - if you do not do this you will not receive crash reports on the Firebase console.
+
 ## Add the dependency
 
 Add the Firebase Crashlytics dependency to `android/app/build.gradle`:
@@ -73,3 +75,5 @@ public class MainApplication extends Application implements ReactApplication {
   // ...
 }
 ```
+
+?> If you're migrating from Fabric ensure you **remove the `fabric.properties` file** from your android project - if you do not do this you will not receive crash reports on the Firebase console.
