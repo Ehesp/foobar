@@ -22,3 +22,10 @@ It should look like this, but with your ID, not the sample ID used below:
   <key>GADApplicationIdentifier</key>
   <string>ca-app-pub-3940256099942544~1458002511</string>
 ```
+
+As of Google Mobile Ads SDK version 7.42.0 you will also need to declare that your app is an Ad Manager app by adding the GADIsAdManagerApp key with a boolean value YES. Failure to add add this results in a crash with the message: "The Google Mobile Ads SDK was initialized incorrectly."
+
+```xml
+  <key>GADIsAdManagerApp</key>
+  <true/>
+```
