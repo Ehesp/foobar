@@ -6,11 +6,24 @@ First ensure you have followed the [initial setup guide](version /installation/i
 
 ### Add the pods
 
-Add the following to your `Podfile`:
+Assuming your `Podfile` already contains
 
 ```ruby
-pod 'Fabric', '~> {{ ios.fabric.tools }}'
-pod 'Crashlytics', '~> {{ ios.firebase.crashlytics }}'
+pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
+```
+
+Add the following to your `Podfile` in order to properly set up paths for `#import`'s in `RNFirebase` pod project:
+
+```ruby
+pod 'RNFirebase/Crashlytics', :path => '../node_modules/react-native-firebase/ios'
+```
+
+_Optional_: In case if you want to control versions of `Fabric` and `Crashlytics` add this to your `Podfile`
+
+```ruby
+pod 'Fabric', '~> x.y.z'
+pod 'Crashlytics', '~> x.y.z'
+
 ```
 
 Run `pod update`.
