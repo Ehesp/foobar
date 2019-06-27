@@ -25,19 +25,19 @@ android:
     play-services-base: 16.1.0
 ios:
   fabric:
-    tools: 1.10.1
+    tools: 1.10.2
   firebase:
-    ads: 6.2.0
-    auth: 6.2.0
-    config: 6.2.0
-    core: 6.2.0
-    crash: 6.2.0
-    crashlytics: 3.13.1
-    database: 6.2.0
-    firestore: 6.2.0
-    functions: 6.2.0
-    invites: 6.2.0
-    links: 6.2.0
-    messaging: 6.2.0
-    perf: 6.2.0
-    storage: 6.2.0
+    ads: 6.3.0
+    auth: 6.3.0
+    config: 6.3.0
+    core: 6.3.0
+    crash: 6.3.0
+    crashlytics: 3.13.2
+    database: 6.3.0
+    firestore: 6.3.0
+    functions: 6.3.0
+    invites: 6.3.0
+    links: 6.3.0
+    messaging: 6.3.0
+    perf: 6.3.0
+    storage: 6.3.0
