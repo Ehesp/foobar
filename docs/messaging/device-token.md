@@ -16,7 +16,7 @@ The registration token may change when:
 ```js
 const fcmToken = await firebase.messaging().getToken();
 if (fcmToken) {
-    // user has a device token
+    // user have a device token
 } else {
     // user doesn't have a device token yet
 }
