@@ -38,7 +38,7 @@ export default App;
 ```
 
 Right now, we simply render out some text. Lets now anonymously authenticate the user before we show the app.
-We'll use the [ref auth#signInAnonymously] method to do this:
+We'll use the [ref auth#signInAnonymouslyAndRetrieveData] method to do this:
 
 ```jsx
 import React from 'react';
@@ -55,7 +55,7 @@ class App extends React.Component {
   }
   
   componentDidMount() {
-    firebase.auth().signInAnonymously()
+    firebase.auth().signInAnonymouslyAndRetrieveData()
       .then(() => {
         this.setState({
           isAuthenticated: true,
@@ -81,7 +81,7 @@ class App extends React.Component {
 export default App;
 ```
 
-Now the app wont render until the [ref auth#signInAnonymously] method has resolved. You can now access the anonymous users details using the [ref auth#currentUser] property.
+Now the app wont render until the [ref auth#signInAnonymouslyAndRetrieveData] method has resolved. You can now access the anonymous users details using the [ref auth#currentUser] property.
 
 If the user closes and re-opens the app, Firebase will automatically sign them back in to the anonymous account they've already been assigned if available. 
 
