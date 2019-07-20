@@ -21,5 +21,5 @@ Run `pod update`.
 4. Add the following line to the **Type a script..** text box:
 
 ```groovy
-"${PODS_ROOT}/Fabric/run" <FABRIC API KEY> <FABRIC BUILD SECRECT>
+"${PODS_ROOT}/Fabric/run"
 ```

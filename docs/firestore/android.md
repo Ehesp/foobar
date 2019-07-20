@@ -37,3 +37,20 @@ public class MainApplication extends Application implements ReactApplication {
   // ...
 }
 ```
+
+## Enable multidex
+
+Adding Firestore to your Android app requires [`multiDexEnabled` to be set to `true`](https://developer.android.com/studio/build/multidex) in `android/app/build.gradle`:
+
+```java
+//..
+android {
+  //..
+  
+  defaultConfig {
+    //..
+    multiDexEnabled true  // needed for firestore:
+  }
+  //..
+}
+```
