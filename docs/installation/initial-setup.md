@@ -6,7 +6,7 @@ Install React Native Firebase from NPM:
 npm install --save react-native-firebase
 ```
 
-!> **Semver warning:** while v5 is in long-term maintenance during the v6 transition, v5 will allow *breaking change* in minior releases. Configure your `package.json` dependency to use the '~' semver range instead of '^' to avoid unexpected breaking change.
+!> **Semver warning:** while v5 is in long-term maintenance during the v6 transition, v5 will allow *breaking change* in minor releases. Configure your `package.json` dependency to use the '~' semver range instead of '^' to avoid unexpected breaking change.
 
 ## Firebase
 
