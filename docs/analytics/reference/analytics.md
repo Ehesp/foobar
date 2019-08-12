@@ -17,7 +17,7 @@ Note: up to 100 characters is the maximum character length supported for event p
 | Parameter |         |
 | --------- | ------- |
 | event   | **string**  |
-| params   | **object**  |
+| params   | **object** (optional) |
 
 ### setAnalyticsCollectionEnabled
 [method]setAnalyticsCollectionEnabled(enabled) returns void;[/method]
