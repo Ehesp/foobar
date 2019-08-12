@@ -1,6 +1,6 @@
 # HttpMetric
 
-?> **Upcoming Change:** Note that this API is likely to change in v5.1.0 to convert all Trace / HttpMetric methods (except start & stop) to be synchronous JS side methods. The API implemented currently is an initial draft to allow early access.
+?> **Upcoming Change Notification:** Note that this API is likely to change in v6.0.0 to convert all Trace / HttpMetric methods (except start & stop) to be synchronous JS side methods. The API implemented currently is an initial draft to allow early access.
 
 > Once a trace has been started and stopped, you cannot re-start it in the same app lifecycle.
 

@@ -27,7 +27,7 @@ If you already have an existing project you can skip to the [Platform Specific I
 
  ![New Project Dialog](https://i.imgur.com/50I2bvj.png)
 
- - Once created you'll be redirected to the project homepage as show below
+ - Once created you'll be redirected to the project homepage as shown below
  
  ![New Project Homepage](https://i.imgur.com/vebPTf1.png)
 

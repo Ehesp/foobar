@@ -15,12 +15,13 @@ import { AccessToken, LoginManager } from 'react-native-fbsdk';
 import firebase from 'react-native-firebase'
 
 // Calling the following function will open the FB login dialogue:
-const facebookLogin = async () => {
+export async function facebookLogin() {
   try {
     const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email']);
 
     if (result.isCancelled) {
-      throw new Error('User cancelled request'); // Handle this however fits the flow of your app
+      // handle this however suites the flow of your app
+      throw new Error('User cancelled request'); 
     }
 
     console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
@@ -29,16 +30,17 @@ const facebookLogin = async () => {
     const data = await AccessToken.getCurrentAccessToken();
 
     if (!data) {
-      throw new Error('Something went wrong obtaining the users access token'); // Handle this however fits the flow of your app
+      // handle this however suites the flow of your app
+      throw new Error('Something went wrong obtaining the users access token');
     }
 
     // create a new firebase credential with the token
     const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
 
     // login with credential
-    const currentUser = await firebase.auth().signInAndRetrieveDataWithCredential(credential);
+    const firebaseUserCredential = await firebase.auth().signInWithCredential(credential);
 
-    console.info(JSON.stringify(currentUser.user.toJSON()))
+    console.warn(JSON.stringify(firebaseUserCredential.user.toJSON()))
   } catch (e) {
     console.error(e);
   }
@@ -56,9 +58,9 @@ import { GoogleSignin } from 'react-native-google-signin';
 import firebase from 'react-native-firebase'
 
 // Calling this function will open Google for login.
-export const googleLogin = async () => {
+export async function googleLogin() {
   try {
-    // Add any configuration settings here:
+    // add any configuration settings here:
     await GoogleSignin.configure();
 
     const data = await GoogleSignin.signIn();
@@ -66,9 +68,9 @@ export const googleLogin = async () => {
     // create a new firebase credential with the token
     const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken)
     // login with credential
-    const currentUser = await firebase.auth().signInAndRetrieveDataWithCredential(credential);
+    const firebaseUserCredential = await firebase.auth().signInWithCredential(credential);
 
-    console.info(JSON.stringify(currentUser.user.toJSON()));
+    console.warn(JSON.stringify(firebaseUserCredential.user.toJSON()));
   } catch (e) {
     console.error(e);
   }
@@ -77,7 +79,47 @@ export const googleLogin = async () => {
 ```
 
 ## Twitter
+You can use [`react-native-twitter-signin`](https://github.com/GoldenOwlAsia/react-native-twitter-signin) for Twitter authentication. This library handles the flow of logging in a user and accessing their `authToken` and `authTokenSecret` by wrapping around the official Twitter library.
+
+The`react-native-twitter-signin` library allows us to login (using `RNTwitterSignIn`) which returns `authToken` and `authTokenSecret`
+
+Make sure you thoroughly follow the instructions on setting up the necessary requirements to get `react-native-twitter-signin` working.
+
+
+```js
+import { NativeModules } from 'react-native';
+import firebase from 'react-native-firebase';
+
+const { RNTwitterSignIn } = NativeModules;
+const { TwitterAuthProvider } = firebase.auth;
+
+const TwitterKeys = {
+  TWITTER_CONSUMER_KEY: 'PLACE_YOUR_TWITTER_CONSUMER_KEY_HERE',
+  TWITTER_CONSUMER_SECRET: 'PLACE_YOUR_TWITTER_CONSUMER_SECRET_HERE'
+};
+
+export async function twitterLogin() {
+  try {
+    await RNTwitterSignIn.init(TwitterKeys.TWITTER_CONSUMER_KEY, TwitterKeys.TWITTER_CONSUMER_SECRET);
+
+    // also includes: name, userID & userName
+    const { authToken, authTokenSecret } = await RNTwitterSignIn.logIn();    
+    
+    const credential = TwitterAuthProvider.credential(authToken, authTokenSecret);
+    
+    const firebaseUserCredential = await firebase.auth().signInWithCredential(credential);
+
+    console.warn(JSON.stringify(firebaseUserCredential.user.toJSON()));
+  } catch (e) {
+    console.error(e);
+  }
+}
+```
 
 ## Github
 
+> TODO - PRs Welcome.
+
 ## Custom Provider
+
+> TODO - PRs Welcome.

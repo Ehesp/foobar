@@ -67,16 +67,16 @@ Returns a [ref admob.VideoOptions] class.
 ## Types
 
 ### EventTypes
-[method]VideoOptions returns [EventTypes](https://github.com/invertase/react-native-firebase/blob/master/lib/modules/admob/EventTypes.js#L2);[/method]
+[method]VideoOptions returns [EventTypes](https://github.com/invertase/react-native-firebase/blob/master/src/modules/admob/EventTypes.js#L2);[/method]
 
 Returns an `Object` containing Admob event types.
 
 ### RewardedVideoEventTypes
-[method]RewardedVideoEventTypes returns [RewardedVideoEventTypes](https://github.com/invertase/react-native-firebase/blob/master/lib/modules/admob/EventTypes.js#L10);[/method]
+[method]RewardedVideoEventTypes returns [RewardedVideoEventTypes](https://github.com/invertase/react-native-firebase/blob/master/src/modules/admob/EventTypes.js#L10);[/method]
 
 Returns an `Object` containing [RewardedVideo](#rewarded) event types.
 
 ### NativeExpressEventTypes
-[method]NativeExpressEventTypes returns [NativeExpressEventTypes](https://github.com/invertase/react-native-firebase/blob/master/lib/modules/admob/EventTypes.js#L18);[/method]
+[method]NativeExpressEventTypes returns [NativeExpressEventTypes](https://github.com/invertase/react-native-firebase/blob/master/src/modules/admob/EventTypes.js#L18);[/method]
 
 Returns an `Object` containing [NativeExpress](#NativeExpress) event types.

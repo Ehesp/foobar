@@ -43,19 +43,29 @@ public class MainApplication extends Application implements ReactApplication {
 
 Add the following to `android/app/src/main/AndroidManifest.xml`:
 
-Within the application component, add the messaging service and instance ID service:
+Within the application component, add the messaging service:
 ```xml
 <application ...>
+
   <service android:name="io.invertase.firebase.messaging.RNFirebaseMessagingService">
     <intent-filter>
       <action android:name="com.google.firebase.MESSAGING_EVENT" />
     </intent-filter>
   </service>
+
+</application>
+```
+
+**For RNFB versions less than 5.2.0 only**; add the instance ID service:
+```xml
+<application ...>
+
   <service android:name="io.invertase.firebase.messaging.RNFirebaseInstanceIdService">
     <intent-filter>
       <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
     </intent-filter>
   </service>
+
 </application>
 ```
 
