@@ -54,9 +54,9 @@ We provide several options for you to get started with React Native Firebase, se
 
 |                           |  3.3.x   |       5.2.x        |       5.4.x       |    5.5.x   |
 | ------------------------- | :------: | :----------------: | :---------------: |:----------:|
-| React Native              | 0.50-52  |      0.52-58       |      ^0.59.3      |   ^0.59.3  |
-| Play Services Android SDK | 11.8.0 + |      ^16.1.0       |      ^16.1.0      |  ^16.1.0 (or ^17.x via [jetifier](https://github.com/mikehardy/jetifier) |
-| Firebase iOS SDK          | 4.7.0 +  |  ^5.10.x -^5.18.x  | ^5.19.x - ^5.20.x | ^5.19.x - ^6.5.x |
+| React Native              | 0.50-52  |      0.52-58       |      ^0.59.3      |   ^0.59.3-^0.61.0  |
+| Play Services Android SDK | 11.8.0 + |      ^16.1.0       |      ^16.1.0      |  ^16.1.0 (or ^17.x via [jetifier](https://github.com/mikehardy/jetifier)) |
+| Firebase iOS SDK          | 4.7.0 +  |  ^5.10.x -^5.18.x  | ^5.19.x - ^5.20.x | ^5.19.x - ^6.x |
 
 ⚠ For **iOS 13** you must use Firebase iOS SDK at version `^6.5.x`. Otherwise your app may crash, for more information [take a look on this issue](https://github.com/invertase/react-native-firebase/issues/2409)
 
