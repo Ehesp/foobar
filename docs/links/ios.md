@@ -78,7 +78,7 @@ Run `pod update`.
     openURL:(NSURL *)url 
     options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     
-        BOOL handled = [RCTLinkingManager application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+        BOOL handled = [RCTLinkingManager application:application openURL:url options:options];
         
         if (!handled) {
             handled = [[RNFirebaseLinks instance] application:application openURL:url options:options];
