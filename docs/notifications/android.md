@@ -6,7 +6,7 @@ First ensure you have followed the [initial setup guide](version /installation/i
 
 ## Install the RNFirebase Notifications package
 
-**Note**: This is for react-native 0.60+ - for earlier versions of react-native please refer to the [previous version of this documentation](https://github.com/invertase/react-native-firebase-docs/blob/c73145088de14ede089fdd3bd3eaf156cc01203c/docs/auth/android.md).
+**Note**: This is for react-native 0.60+ - for earlier versions of react-native please refer to the [previous version of this documentation](https://github.com/invertase/react-native-firebase-docs/blob/c73145088de14ede089fdd3bd3eaf156cc01203c/docs/notifications/android.md).
 
 Add the `RNFirebaseNotificationsPackage` to your `android/app/src/main/java/com/[app name]/MainApplication.java`:
 
