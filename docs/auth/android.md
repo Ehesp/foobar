@@ -15,7 +15,7 @@ dependencies {
 
 ## Install the RNFirebase Authentication package
 
-**Note**: This is for React Native 6.0+ - for earlier versions of RN please refer to the [previous version of this documentation](https://github.com/invertase/react-native-firebase-docs/blob/8c36d9df1a35e993f5d4126c33448256b9c5b682/docs/auth/android.md).
+**Note**: This is for react-native 0.60+ - for earlier versions of react-native please refer to the [previous version of this documentation](https://github.com/invertase/react-native-firebase-docs/blob/8c36d9df1a35e993f5d4126c33448256b9c5b682/docs/auth/android.md).
 
 Add the `RNFirebaseAuthPackage` to your `android/app/src/main/java/com/[app name]/MainApplication.java`:
 
