@@ -15,7 +15,7 @@ dependencies {
 
 ## Install the RNFirebase Firestore package
 
-**Note**: This is for react-native 0.60+ - for earlier versions of react-native please refer to the [previous version of this documentation](https://github.com/invertase/react-native-firebase-docs/blob/ba1f39d6099ea384cb17ec9cc4a319e41e45154b/firestore/auth/android.md).
+**Note**: This is for react-native 0.60+ - for earlier versions of react-native please refer to the [previous version of this documentation](https://github.com/invertase/react-native-firebase-docs/blob/ba1f39d6099ea384cb17ec9cc4a319e41e45154b/docs/firestore/android.md).
 
 Add the `RNFirebaseFirestorePackage` to your `android/app/src/main/java/com/[app name]/MainApplication.java`:
 
