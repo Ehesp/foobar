@@ -15,8 +15,11 @@ Add the following import to the top of your `ios/[App Name]/AppDelegate.m`:
 Add the following to the `didFinishLaunchingWithOptions:(NSDictionary *)launchOptions` method, right after `[FIRApp Configure]`:
 
 ```objectivec
+[FIRApp Configure] // after this line
 [RNFirebaseNotifications configure];
 ```
+
+?> It is recommended to add the line within the method **BETWEEN** the statement **[FIRApp Configure]** and the creation of **RCTRootView**. Otherwise the initialization can occur after already being required in your JavaScript code - leading to `app not initialised` exceptions.
 
 Add the following method:
 
