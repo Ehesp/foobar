@@ -15,11 +15,13 @@ dependencies {
 
 ## Install the RNFirebase Admob package
 
+**Note**: This is for react-native 0.60+ - for earlier versions of react-native please refer to the [previous version of this documentation](https://github.com/invertase/react-native-firebase-docs/blob/1659c6ce9503e7ae2db16526e70230b37ef256af/docs/admob/android.md).
+
 Add the `RNFirebaseAdMobPackage` to your `android/app/src/main/java/com/[app name]/MainApplication.java`:
 
 ```java
 // ...
-import io.invertase.firebase.RNFirebasePackage;
+import com.facebook.react.ReactApplication;
 import io.invertase.firebase.admob.RNFirebaseAdMobPackage; // <-- Add this line
 
 public class MainApplication extends Application implements ReactApplication {
@@ -27,11 +29,12 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-          new RNFirebasePackage(),
-          new RNFirebaseAdMobPackage() // <-- Add this line
-      );
+      @SuppressWarnings("UnnecessaryLocalVariable")
+      List<ReactPackage> packages = new PackageList(this).getPackages();
+      // Packages that cannot be autolinked yet can be added manually here, for example:
+      // packages.add(new MyReactNativePackage());
+      packages.add(new RNFirebaseAdMobPackage()); // <-- Add this line
+      return packages;
     }
   };
   // ...
@@ -62,3 +65,5 @@ Within the application component, add your AdMob ID (from the AdMob UI):
 ```
 
 > Important: This AdmOb ID is required as of Google Mobile Ads SDK version 17.0.0. Failure to add this `<meta-data>` tag results in a crash with the message: "The Google Mobile Ads SDK was initialized incorrectly."
+
+> Important: Do not forget to update your "Contains ads" settings in PlayStore -> Pricing & distribution tab. 
