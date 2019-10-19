@@ -1,5 +1,7 @@
 # Receiving Notifications
 
+You must call `firebase.messaging().hasPermission()` even if the user has already granted permissions for notifications in order to register the device to receive push notifications.
+
 ## 1) Check permissions
 
 Before you are able to send and receive Notifications, you need to ensure that the user has granted the correct permissions:
