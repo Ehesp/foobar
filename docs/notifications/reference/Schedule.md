@@ -7,7 +7,7 @@ Object giving information about the schedule to use for a notification.
 ### exact
 [method]exact returns nullable boolean;[/method]
 
-> Android only
+> Android only (Note: The minimum Android API version must be at least `19` to enable **exact** delivery times. You may set your minimum API level in: `android/build.gradle` > `buildscript.ext.minSdkVersion`)
 
 If the fireDate should be respected exactly, i.e. for reminders, or if it can deviate slightly to save battery.
 
