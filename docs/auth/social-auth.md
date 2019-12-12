@@ -12,7 +12,7 @@ The [@invertase/react-native-apple-authentication](https://github.com/invertase/
 **Step 1**: Login with Apple.
 
 ```js
-import { firebase } from 'react-native-firebase';
+import firebase from 'react-native-firebase';
 import appleAuth, {
   AppleButton,
   AppleAuthRequestScope,
