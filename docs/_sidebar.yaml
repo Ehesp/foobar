@@ -270,6 +270,19 @@
       - ITunesParameters
       - NavigationParameters
       - SocialParameters
+  - title: In App Messaging
+    path: in-app-messaging
+    links:
+    - to: "/ios"
+      text: Install on iOS
+      icon: apple
+    - to: "/android"
+      text: Install on Android
+      icon: android
+    - type: divider
+    - to: "/getting-started"
+      text: Getting Started
+      icon: info-circle-o
   - title: Instance ID
     path: iid
     links:
@@ -325,6 +338,10 @@
       text: Notification Actions
       icon: android
     - type: divider
+    - to: "https://medium.com/@katharinep/firebase-notification-integration-in-react-native-0-60-3a8d6c8d56ff"
+      text: React Native 0.60+ Integration
+      type: external
+      icon: info-circle-o
     - to: "https://medium.com/the-modern-development-stack/react-native-push-notifications-with-firebase-cloud-functions-74b832d45386"
       text: With Cloud Functions
       type: external

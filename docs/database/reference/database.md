@@ -56,7 +56,7 @@ ref.update({ foo: 'bar' });
 | path  | **string** (optional) <br /> Optional path representing the location the returned Reference will point. If not provided, the returned Reference will point to the root of the Database. |
 
 ### getServerTime
-[method]getServerTime() returns number;[/method]
+[method]getServerTime() returns Date;[/method]
 
 Gets the Firebase server current timestamp.
 
