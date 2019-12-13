@@ -15,6 +15,7 @@ android:
     firestore: 19.0.0
     functions: 17.0.0
     links: 19.0.0
+    in-app-messaging: 17.2.0
     invites: 17.0.0
     messaging: 18.0.0
     perf: 17.0.2
