@@ -137,24 +137,27 @@ Run:
 react-native link react-native-firebase
 ```
 
-### Option 2: Cocoapods (Not Recommended)
+### Option 2: Cocoapods
 
-Whilst we do not recommend using `react-native-firebase` as a Pod, it is possible to install this way provided you are:
+In your Podfile, you can add the following
 
-1) Not using Swift
-2) Don't have the `use_frameworks!` flag enabled
+```ruby
+pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
+```
 
-This is a restriction of Cocoapods and how it interacts with Dynamic Frameworks such as Firebase.
+If you have `use_framework!` in your Podfile, you might need to add in it the following code to adjust the header paths to avoid the error `'Firebase.h' file not found with <angled> include; use "quotes" instead`
 
-> The upcoming v6 release supports `use_frameworks!` by default and modules are distrubted as static frameworks. [Learn more here](https://github.com/invertase/react-native-firebase/issues/2025). 
+```ruby
+post_install do |installer|
+  rnfirebase = installer.pods_project.targets.find { |target| target.name == 'RNFirebase' }
+  rnfirebase.build_configurations.each do |config|
+    config.build_settings['HEADER_SEARCH_PATHS'] = '$(inherited) ${PODS_ROOT}/Headers/Public/**'
+  end
+end
+```
 
-#### Why do we not recommend a pod installation?
-
-Our preference would definitely be to make use of Cocoapods for both Firebase and React Native Firebase and indeed, this did use to be our recommended approach.
-
-However, due to the fragmented React Native ecosystem and the fact that it defaults to a non-Cocoapods installation, it means that getting up and running with Cocoapods can be a bit of a nightmare.
-
-If you look through our issue history, you'll see this caused us countless issues.  Since switching to using `react-native link` we have managed to minimise them dramatically.
+This workaround should allow you use RNFirebase with Swift frameworks.
+If you are familiar with iOS/Swift, [you can help us to improve the situation](https://github.com/invertase/react-native-firebase/pull/2328).
 
 ## 3. Install modules
 

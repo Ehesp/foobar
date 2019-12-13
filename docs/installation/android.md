@@ -48,9 +48,9 @@ dependencies {
 
 ### Update Gradle
 
-Due to some breaking changes in v12+ of the Android Firebase libraries, you'll need to upgrade your Gradle version to at least v4.4 and make a few other tweaks as follows:
+Due to some breaking changes in v12+ of the Android Firebase libraries, you'll need to upgrade your Gradle version to at least v5.1.1 and make a few other tweaks as follows:
 
-1) In `android/gradle/wrapper/gradle-wrapper.properties`, update the gradle URL to `gradle-4.4-all.zip`
+1) In `android/gradle/wrapper/gradle-wrapper.properties`, update the gradle URL to `gradle-5.1.1-all.zip`
 2) In `android/build.gradle` check that you have `google()` specified in the buildScript repositories section:
 
 ```groovy
