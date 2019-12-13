@@ -1,5 +1,7 @@
 # Dynamic Links
 
+!> Invites has been removed from the Firebase SDKs, and removed here as of v5.5.0. This documentation is only here for users of older versions of the library. Use Dynamic Links instead.
+
 [Firebase Invites](https://firebase.google.com/docs/invites/) are an out-of-the-box solution for app referrals and sharing via email or SMS.
 
 ## Methods
@@ -65,7 +67,7 @@ Returns a promise that resolves with the created invitation IDs if the invitatio
 ```javascript
 // create invitation
 const invitation = new firebase.invites.Invitation('Title', 'Message');
-invitation.setDeepLink('https://je786.app.goo.gl/testing');
+invitation.setDeepLink('https://je786.page.link/testing');
 // send the invitation
 const invitationIds = await firebase.invites().sendInvitation(invitation);
 // use the invitationIds as you see fit

@@ -11,14 +11,14 @@ Read our documentation on [Sorting and filtering data](https://firebase.google.c
 ### ref
 [method]ref returns non-null [ref database.Reference];[/method]
 
-Returns a Reference to the Query's location.
+Returns a `Reference` to the `Query`'s location.
 
 ## Methods
 
 ### endAt
 [method]endAt(value, key) returns [ref database.Query];[/method]
 
-Creates a Query with the specified ending point.
+Creates a `Query` with the specified ending point.
 
 Using `startAt()`, `endAt()`, and `equalTo()` allows you to choose arbitrary starting and ending points for your queries.
 
@@ -28,13 +28,13 @@ You can read more about endAt() in [Filtering data](https://firebase.google.com/
 
 | Parameter |         |
 | --------- | ------- |
-| value  | **string** or **number** or **boolean** or **null** <br /> The value to end at. The argument type depends on which orderBy*() function was used in this query. Specify a value that matches the orderBy*() type. When used in combination with orderByKey(), the value must be a string. |
+| value  | **string** or **number** or **boolean** or **null** <br /> The value to end at. The argument type depends on which *orderBy()* function was used in this query. Specify a value that matches the *orderBy()* type. When used in combination with *orderByKey()*, the value must be a string. |
 | key  | **string** (optional) <br /> The child key to end at, among the children with the previously specified priority. This argument is only allowed if ordering by child, value, or priority. |
 
 ### equalTo
 [method]equalTo(value, key) returns [ref database.Query];[/method]
 
-Creates a Query with the specified ending point.
+Creates a `Query` with the specified ending point.
 
 Using `startAt()`, `endAt()`, and `equalTo()` allows you to choose arbitrary starting and ending points for your queries.
 
@@ -44,7 +44,7 @@ You can read more about endAt() in [Filtering data](https://firebase.google.com/
 
 | Parameter |         |
 | --------- | ------- |
-| value  | **string** or **number** or **boolean** or **null** <br /> The value to end at. The argument type depends on which orderBy*() function was used in this query. Specify a value that matches the orderBy*() type. When used in combination with orderByKey(), the value must be a string. |
+| value  | **string** or **number** or **boolean** or **null** <br /> The value to equal to. The argument type depends on which *orderBy()* function was used in this query. Specify a value that matches the *orderBy()* type. When used in combination with *orderByKey()*, the value must be a string. |
 | key  | **string** (optional) <br /> The child key to end at, among the children with the previously specified priority. This argument is only allowed if ordering by child, value, or priority. |
 
 ### isEqual
@@ -52,9 +52,9 @@ You can read more about endAt() in [Filtering data](https://firebase.google.com/
 
 Returns whether or not the current and provided queries represent the same location, have the same query parameters, and are from the same instance of firebase.app.App.
 
-Two Reference objects are equivalent if they represent the same location and are from the same instance of firebase.app.App.
+Two `Reference` objects are equivalent if they represent the same location and are from the same instance of firebase.app.App.
 
-Two Query objects are equivalent if they represent the same location, have the same query parameters, and are from the same instance of firebase.app.App. Equivalent queries share the same sort order, limits, and starting and ending points.
+Two `Query` objects are equivalent if they represent the same location, have the same query parameters, and are from the same instance of firebase.app.App. Equivalent queries share the same sort order, limits, and starting and ending points.
 
 | Parameter |         |
 | --------- | ------- |
@@ -63,7 +63,7 @@ Two Query objects are equivalent if they represent the same location, have the s
 ### limitToFirst
 [method]limitToFirst(limit) returns [ref database.Query];[/method]
 
-Generates a new Query limited to the first specific number of children.
+Generates a new `Query` limited to the first specific number of children.
 
 The limitToFirst() method is used to set a maximum number of children to be synced for a given callback. If we set a limit of 100, we will initially only receive up to 100 child_added events. If we have fewer than 100 messages stored in our Database, a child_added event will fire for each message. However, if we have over 100 messages, we will only receive a child_added event for the first 100 ordered messages. As items change, we will receive child_removed events for each item that drops out of the active list so that the total number stays at 100.
 
@@ -71,12 +71,12 @@ You can read more about limitToFirst() in [Filtering data](https://firebase.goog
 
 | Parameter |         |
 | --------- | ------- |
-| query  | **limit** <br /> The maximum number of nodes to include in this query. |
+| limit  | **number** <br /> The maximum number of nodes to include in this query. |
 
 ### limitToLast
 [method]limitToLast(limit) returns [ref database.Query];[/method]
 
-Generates a new Query object limited to the last specific number of children.
+Generates a new `Query` object limited to the last specific number of children.
 
 The `limitToLast()` method is used to set a maximum number of children to be synced for a given callback. If we set a limit of 100, we will initially only receive up to 100 child_added events. If we have fewer than 100 messages stored in our Database, a child_added event will fire for each message. However, if we have over 100 messages, we will only receive a child_added event for the last 100 ordered messages. As items change, we will receive child_removed events for each item that drops out of the active list so that the total number stays at 100.
 
@@ -136,8 +136,8 @@ This event will be triggered when a child's sort order changes such that its pos
 | Parameter |         |
 | --------- | ------- |
 | eventType   | **string** (optional) <br /> One of the following strings: "value", "child_added", "child_changed", "child_removed", or "child_moved." |
-| callback   | **function** <br /> A callback that fires when the specified event occurs. The callback will be passed a DataSnapshot. For ordering purposes, "child_added", "child_changed", and "child_moved" will also be passed a string containing the key of the previous child, by sort order, or null if it is the first child. |
-| cancelCallbackOrContext   | **Object** <br /> An optional callback that will be notified if your event subscription is ever canceled because your client does not have permission to read this data (or it had permission but has now lost it). This callback will be passed an Error object indicating why the failure occurred. |
+| callback   | **function** <br /> A callback that fires when the specified event occurs. The callback will be passed a `DataSnapshot`. For ordering purposes, "child_added", "child_changed", and "child_moved" will also be passed a string containing the key of the previous child, by sort order, or null if it is the first child. |
+| cancelCallbackOrContext   | **function** (optional) <br /> An optional callback that will be notified if your event subscription is ever canceled because your client does not have permission to read this data (or it had permission but has now lost it). This callback will be passed an Error object indicating why the failure occurred. |
 | context   | **Object** (optional) <br /> If provided, this object will be used as this when calling your callback(s). |
 
 ### once
@@ -151,13 +151,13 @@ This is equivalent to calling [ref database.Query#on], and then calling [ref dat
 | --------- | ------- |
 | eventType   | **string** (optional) <br /> One of the following strings: "value", "child_added", "child_changed", "child_removed", or "child_moved." |
 | successCallback   | **function** <br /> A callback that fires when the specified event occurs. The callback will be passed a DataSnapshot. For ordering purposes, "child_added", "child_changed", and "child_moved" will also be passed a string containing the key of the previous child, by sort order, or null if it is the first child. |
-| cancelCallbackOrContext   | **Object** <br /> An optional callback that will be notified if your event subscription is ever canceled because your client does not have permission to read this data (or it had permission but has now lost it). This callback will be passed an Error object indicating why the failure occurred. |
+| failureCallbackOrContext   | **function** (optional) <br /> An optional callback that will be notified if your event subscription is ever canceled because your client does not have permission to read this data (or it had permission but has now lost it). This callback will be passed an Error object indicating why the failure occurred. |
 | context   | **Object** (optional) <br /> If provided, this object will be used as this when calling your callback(s). |
 
 ### orderByChild
 [method]orderByChild(path) returns [ref database.Query];[/method]
 
-Generates a new Query object ordered by the specified child key.
+Generates a new `Query` object ordered by the specified child key.
 
 Queries can only order by one key at a time. Calling orderByChild() multiple times on the same query is an error.
 
@@ -170,7 +170,7 @@ Firebase queries allow you to order your data by any child key on the fly. Howev
 ### orderByKey
 [method]orderByKey() returns [ref database.Query];[/method]
 
-Generates a new Query object ordered by key.
+Generates a new `Query` object ordered by key.
 
 Sorts the results of a query by their (ascending) key values.
 
@@ -179,14 +179,14 @@ You can read more about orderByKey() in [Sort data](https://firebase.google.com/
 ### orderByPriority
 [method]orderByPriority() returns [ref database.Query];[/method]
 
-Generates a new Query object ordered by priority.
+Generates a new `Query` object ordered by priority.
 
 Applications need not use priority but can order collections by ordinary properties (see [Sort data](https://firebase.google.com/docs/database/web/lists-of-data#sort_data) for alternatives to priority).
 
 ### orderByValue
 [method]orderByValue() returns [ref database.Query];[/method]
 
-Generates a new Query object ordered by value.
+Generates a new `Query` object ordered by value.
 
 If the children of a query are all scalar values (string, number, or boolean), you can order the results by their (ascending) values.
 
@@ -195,7 +195,7 @@ You can read more about orderByValue() in [Sort data](https://firebase.google.co
 ### startAt
 [method]startAt(value, key) returns [ref database.Query];[/method]
 
-Creates a Query with the specified starting point.
+Creates a `Query` with the specified starting point.
 
 Using `startAt()`, `endAt()`, and `equalTo()` allows you to choose arbitrary starting and ending points for your queries.
 
@@ -205,7 +205,7 @@ You can read more about `startAt()` in [Filtering data](https://firebase.google.
 
 | Parameter |         |
 | --------- | ------- |
-| value   | **string** <br /> The value to start at. The argument type depends on which orderBy*() function was used in this query. Specify a value that matches the orderBy*() type. When used in combination with orderByKey(). |
+| value   | **string** or **number** or **boolean** or **null** <br /> The value to start at. The argument type depends on which *orderBy()* function was used in this query. Specify a value that matches the *orderBy()* type. When used in combination with *orderByKey()*. |
 | key   | **string** <br /> The child key to start at. This argument is only allowed if ordering by child, value, or priority. |
 
 ### toJSON

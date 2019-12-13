@@ -16,7 +16,7 @@ Run `pod update`.
 
 1. In your [Firebase console](https://console.firebase.google.com/), open the Dynamic Links section.
     1. Accept the terms of service if you are prompted to do so.
-    2. Take note of your project's Dynamic Links domain, which is displayed at the top of the Dynamic Links page. You need your project's Dynamic Links domain to programmatically create Dynamic Links. A Dynamic Links domain looks like app_code.app.goo.gl.
+    2. Take note of your project's Dynamic Links domain, which is displayed at the top of the Dynamic Links page. You need your project's Dynamic Links domain to programmatically create Dynamic Links. A Dynamic Links domain looks like app_code.page.link.
     
         ![console](https://firebase.google.com/docs/dynamic-links/images/dynamic-links-domain.png)
 
@@ -36,7 +36,7 @@ Run `pod update`.
      If the details field is empty, double-check that you specified your Team ID.
 3. In the Info tab of your app's XCode project, create a new URL type to be used for Dynamic Links. Set the `Identifier` field to a unique value and the URL scheme field to either your bundle identifier or a unique value.
 
-4. In the Capabilities tab of your app's Xcode project, enable Associated Domains and add the following to the Associated Domains list: `applinks:app_code.app.goo.gl` where `app_code` is your dynamic links domain application code as in step *1.2* above.
+4. In the Capabilities tab of your app's Xcode project, enable Associated Domains and add the following to the Associated Domains list: `applinks:app_code.page.link` where `app_code` is your dynamic links domain application code as in step *1.2* above.
 
 5. Update your `AppDelegate.m` file:
     1. Import RN Firebase Links header file:
@@ -70,7 +70,7 @@ Run `pod update`.
         ```
 
     > You might run into situation when you need to handle more than one link configuration
-    > i.e. when using Facebook SDK to handle push notification / login links
+    > i.e. when using react native linking for deeplinks
     > if that is the case you can perform check below
 
     ```objectivec
@@ -78,11 +78,24 @@ Run `pod update`.
     openURL:(NSURL *)url 
     options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     
-        BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+        BOOL handled = [RCTLinkingManager application:application openURL:url options:options];
         
         if (!handled) {
             handled = [[RNFirebaseLinks instance] application:application openURL:url options:options];
         } 
+
+        return handled;
+    }
+
+    - (BOOL)application:(UIApplication *)application
+    continueUserActivity:(NSUserActivity *)userActivity
+    restorationHandler:(void (^)(NSArray *))restorationHandler {
+
+        BOOL handled = [RCTLinkingManager application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
+
+        if (!handled) {
+        handled = [[RNFirebaseLinks instance] application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
+        }
 
         return handled;
     }

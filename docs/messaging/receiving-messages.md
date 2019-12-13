@@ -86,7 +86,7 @@ To allow this to work, we make use of React Native's built-in [Headless JS](http
 
 ### 1) Add Service to Android Manifest
 
-Firstly, check that you've followed the optional steps in the [Android Installation guide](version /installation/android).
+Firstly, check that you've followed the optional steps in the [Android Installation guide](version /messaging/android).
 
 ### 2) Handle background messages
 

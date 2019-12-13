@@ -6,6 +6,8 @@ Install React Native Firebase from NPM:
 npm install --save react-native-firebase
 ```
 
+!> **Semver warning:** while v5 is in long-term maintenance during the v6 transition, v5 will allow *breaking change* in minor releases. Configure your `package.json` dependency to use the '~' semver range instead of '^' to avoid unexpected breaking change.
+
 ## Firebase
 
 The first thing you'll need to have is an active Firebase project.
@@ -27,7 +29,7 @@ If you already have an existing project you can skip to the [Platform Specific I
 
  ![New Project Dialog](https://i.imgur.com/50I2bvj.png)
 
- - Once created you'll be redirected to the project homepage as show below
+ - Once created you'll be redirected to the project homepage as shown below
  
  ![New Project Homepage](https://i.imgur.com/vebPTf1.png)
 
@@ -52,7 +54,7 @@ Once you've completed setting up React Native Firebase you can now use the libra
 import firebase from 'react-native-firebase';
 
 firebase.auth()
-  .signInAnonymouslyAndRetrieveData()
+  .signInAnonymously()
   .then(credential => {
     if (credential) {
       console.log('default app user ->', credential.user.toJSON());
@@ -72,15 +74,28 @@ React Native Firebase supports multiple app instances. For more information see 
 
 We've curated some articles we love below to help you get started.
 
-| Invertase |
+### By Invertase
+
+| Links |
 |:---------:|
 |[Getting started with Cloud Firestore on React Native](https://invertase.io/blog/getting-started-with-cloud-firestore-on-react-native)|
 
 > Found an article you like that's not listed below? Submit a PR to add it here and we'll review it (hint: click on the ✏️ edit button at the top of this page to edit this file on GitHub).
 
-| Community |
+
+### By the community
+
+These guides are written by the community and may or may not be up to date.
+
+| Links |
 |:---------:|
+|[Firebase Notification Integration in React Native 0.60+](https://medium.com/@katharinep/firebase-notification-integration-in-react-native-0-60-3a8d6c8d56ff)|
 |[Building a Google Analytics Funnel from Firebase in React-Native](https://blog.theodo.fr/2018/01/building-google-analytics-funnel-firebase-react-native/)|
 |[React Native Push Notifications with Firebase Cloud Functions](https://medium.com/the-modern-development-stack/react-native-push-notifications-with-firebase-cloud-functions-74b832d45386)|
 |[Firebase Environments with React Native (Dev/Staging/Prod)](https://medium.com/@egunsoma/firebase-environments-with-react-native-dev-staging-prod-3832d7d22a80)|
 |[Adding Firebase Analytics to your React Native app](https://www.measurelab.co.uk/blog/adding-firebase-analytics-react-native-app/)|
+|[Firebase Analytics on React Native: setting it up in 30 steps](https://medium.com/@oakromulo/firebase-analytics-on-react-native-4b348466f025)|
+
+---
+
+Made with 💛 by [Invertase](http://invertase.io)

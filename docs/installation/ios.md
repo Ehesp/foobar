@@ -6,9 +6,7 @@
 
 A `GoogleService-Info.plist` file contains all of the information required by the Firebase iOS SDK to connect to your Firebase project. To automatically generate the plist file, [follow the instructions](https://firebase.google.com/docs/ios/setup#add_firebase_to_your_app) on the Firebase console to "Add Firebase to your app".
 
-Once downloaded, place the file in the root of your iOS app at `ios/[YOUR APP NAME]/GoogleService-Info.plist`.
-
-Make sure that the `GoogleService-Info.plist` file has been added to your project within XCode.
+Once downloaded, add the file to your iOS app using 'File > Add Files to "\[YOUR APP NAME]"...' in XCode.
 
 ### 1.2. Initialise Firebase
 
@@ -106,7 +104,28 @@ Run `pod install`.
 
 #### Option 2: Manual frameworks (Not Recommended)
 
-If for some reason you are unable to use Cocoapods, then you need to manually unzip the Firebase SDK to the `ios/Firebase` folder, and then drag all desired frameworks and Firebase.h to the project (as documented in the README), in order to be picked up by React Native Firebase.
+1. Download the Firebase SDK zip. Check the react-native-firebase versioning table here: https://github.com/invertase/react-native-firebase/tree/v5.x.x#supported-versions---react-native--firebase then download the correct firebase-ios-sdk release from here: https://github.com/firebase/firebase-ios-sdk/releases/
+
+2. Unzip the Firebase-x.x.x.zip file.
+
+3. Note: Here instead of following the readme inside the Firebase folder you downloaded follow the below steps.
+
+3.1. Create a Firebase folder in `{your-project}/ios/Firebase`.
+
+3.2. Copy the folder Analytics and all other module folders you intend to use, and Firebase.h inside to root/ios/Firebase. The README can be useful at this step.
+
+3.3. Open your project in XCode. Right click your ".xcodeproj" and click "Add Files to {yourProjectName}...". Find the "Firebase" folder you created and select it. Before clicking "Add", to the left you'll see an "Options" button. Click it, and make sure "Create Groups" and "Add to targets" for your project are both selected.
+
+3.4. In xcode and in your build settings for your project (You need to have your project selected under targets and not just under Project). search for Header Search Paths and add this $(SRCROOT)/Firebase. Then Search for Framework Search Paths and add this $(SRCROOT)/Firebase.
+
+3.5. Search for Other Linker Settings and add the -ObjC
+
+3.6. In ios/[YOUR APP NAME]/AppDelegate.m add #import <Firebase.h> at the top.
+
+3.7. Still in AppDelegate.m add [FIRApp configure]; in the beginning of the method didFinishLaunchingWithOptions:(NSDictionary *)launchOptions.
+
+#### Note: If you run into issues with the steps outlined in the README, there are a number of workarounds:
+- https://github.com/invertase/react-native-firebase/issues/1847#issuecomment-457952828
 
 ## 2. React Native Firebase Installation Recommended installation
 
@@ -118,22 +137,27 @@ Run:
 react-native link react-native-firebase
 ```
 
-### Option 2: Cocoapods (Not Recommended)
+### Option 2: Cocoapods
 
-Whilst we do not recommend using `react-native-firebase` as a Pod, it is possible to install this way provided you are:
+In your Podfile, you can add the following
 
-1) Not using Swift
-2) Don't have the `use_frameworks!` flag enabled
+```ruby
+pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
+```
 
-This is a restriction of Cocoapods and how it interacts with Dynamic Frameworks such as Firebase.
+If you have `use_framework!` in your Podfile, you might need to add in it the following code to adjust the header paths to avoid the error `'Firebase.h' file not found with <angled> include; use "quotes" instead`
 
-#### Why do we not recommend a pod installation?
+```ruby
+post_install do |installer|
+  rnfirebase = installer.pods_project.targets.find { |target| target.name == 'RNFirebase' }
+  rnfirebase.build_configurations.each do |config|
+    config.build_settings['HEADER_SEARCH_PATHS'] = '$(inherited) ${PODS_ROOT}/Headers/Public/**'
+  end
+end
+```
 
-Our preference would definitely be to make use of Cocoapods for both Firebase and React Native Firebase and indeed, this did use to be our recommended approach.
-
-However, due to the fragmented React Native ecosystem and the fact that it defaults to a non-Cocoapods installation, it means that getting up and running with Cocoapods can be a bit of a nightmare.
-
-If you look through our issue history, you'll see this caused us countless issues.  Since switching to using `react-native link` we have managed to minimise them dramatically.
+This workaround should allow you use RNFirebase with Swift frameworks.
+If you are familiar with iOS/Swift, [you can help us to improve the situation](https://github.com/invertase/react-native-firebase/pull/2328).
 
 ## 3. Install modules
 

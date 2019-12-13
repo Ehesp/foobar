@@ -10,9 +10,24 @@ firebase.functions
  - [RNFirebase - Functions Test Suite](https://github.com/invertase/react-native-firebase/blob/master/bridge/e2e/functions/functions.e2e.js)
  - [RNFirebase - Test Cloud Function](https://github.com/invertase/react-native-firebase/tree/master/bridge/functions)
 
+## Properties
+
+### app
+[method]app return [ref core.App];[/method]
+
+The app associated with this Firestore service instance.
+
 ## Methods
 
 The following methods are accessed via the Functions instance `firebase.functions()`.
+
+### constructor
+[method]functions(appOrRegion?: [ref core.App] | string, region?: string) returns this;[/method]
+
+| Parameter |         |
+| --------- | ------- |
+| appOrRegion | **[ref core.App] | string** <br /> An App instance, ID or Firebase region name |
+| region | **string** <br /> A Firebase region, defaults to us-central1 |
 
 ### httpsCallable
 [method]httpsCallable(name: string) returns (data?: any): [HttpsCallablePromise](#Types) => {};[/method]
@@ -59,6 +74,15 @@ exports.myFooBarFn = functions.https.onCall(data => {
 });
 ```
 [/collapse]
+
+### useFunctionsEmulator
+[method]useFunctionsEmulator(origin: string) returns Promise<null>;[/method]
+
+Changes this instance to point to a Cloud Functions emulator running locally.
+
+| Parameter |         |
+| --------- | ------- |
+| origin      | **string** <br /> The origin string of the local emulator started via [firebase tools](https://firebase.google.com/docs/functions/local-emulator) |
 
 
 ## Types

@@ -81,6 +81,8 @@ When a notification is displayed, the listener is invoked with the notification.
 
 Returns an unsubscribe function.
 
+> iOS Only: see [ref notifications.IOSNotification#complete] for details on handling completion of background downloads
+
 Parameter |         |
 | --------- | ------- |
 | nextOrObserver   | **function([ref notifications.Notification])** or **Object** <br /> This function, or observer object with `next` defined, is called when a notification is displayed. |

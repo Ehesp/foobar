@@ -4,10 +4,12 @@ First ensure you have followed the [initial setup guide](version /installation/i
 
 ## Add the pod
 
-Add the following to your `Podfile`:
+Then just Add the following to your `Podfile`:
 
 ```ruby
-pod 'Firebase/Crash', '~> {{ ios.firebase.crash }}'
+pod 'Firebase'
+pod 'Firebase/InAppMessagingDisplay'
+pod 'Firebase/Analytics'
 ```
 
 Run `pod update`.

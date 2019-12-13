@@ -7,17 +7,20 @@ Add the Firebase Dynamic Links / Invites dependency to your `android/app/build.g
 ```groovy
 dependencies {
   // ...
+  implementation "com.google.firebase:firebase-dynamic-links:{{ android.firebase.links }}"
   implementation "com.google.firebase:firebase-invites:{{ android.firebase.invites }}"
 }
 ```
 
 ## Install the RNFirebase Links package
 
+**Note**: This is for react-native 0.60+ - for earlier versions of react-native please refer to the [previous version of this documentation](https://github.com/invertase/react-native-firebase-docs/blob/cfe8802662b0de36f5f0ad083a0c7472319629ba/docs/links/android.md).
+
 Add the `RNFirebaseLinksPackage` to your `android/app/src/main/java/com/[app name]/MainApplication.java`:
 
 ```java
 // ...
-import io.invertase.firebase.RNFirebasePackage;
+import com.facebook.react.ReactApplication;
 import io.invertase.firebase.links.RNFirebaseLinksPackage; // <-- Add this line
 
 public class MainApplication extends Application implements ReactApplication {
@@ -25,11 +28,12 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-          new RNFirebasePackage(),
-          new RNFirebaseLinksPackage() // <-- Add this line
-      );
+      @SuppressWarnings("UnnecessaryLocalVariable")
+      List<ReactPackage> packages = new PackageList(this).getPackages();
+      // Packages that cannot be autolinked yet can be added manually here, for example:
+      // packages.add(new MyReactNativePackage());
+      packages.add(new RNFirebaseLinksPackage()); // <-- Add this line
+      return packages;
     }
   };
   // ...
@@ -41,7 +45,7 @@ public class MainApplication extends Application implements ReactApplication {
 
 1. In your [Firebase console](https://console.firebase.google.com/), open the Dynamic Links section.
     1. Accept the terms of service if you are prompted to do so.
-    2. Take note of your project's Dynamic Links domain, which is displayed at the top of the Dynamic Links page. You need your project's Dynamic Links domain to programmatically create Dynamic Links. A Dynamic Links domain looks like app_code.app.goo.gl.
+    2. Take note of your project's Dynamic Links domain, which is displayed at the top of the Dynamic Links page. You need your project's Dynamic Links domain to programmatically create Dynamic Links. A Dynamic Links domain looks like app_code.page.link.
 
         ![console](https://firebase.google.com/docs/dynamic-links/images/dynamic-links-domain.png)
 

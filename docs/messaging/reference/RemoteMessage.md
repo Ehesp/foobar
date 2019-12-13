@@ -87,13 +87,13 @@ Sets the messageId for the message.
 | messageId  | **string** <br /> The message ID. |
 
 ### setMessageType
-[method]setMessageType(messageId) returns [ref messaging.RemoteMessage];[/method]
+[method]setMessageType(messageType) returns [ref messaging.RemoteMessage];[/method]
 
-Sets the messageId for the message.
+Sets the messageType for the message.
 
 | Parameter |         |
 | --------- | ------- |
-| messageId  | **string** <br /> The message ID. |
+| messageType  | **string** <br /> The message type. |
 
 ### setTo
 [method]setTo(to) returns [ref messaging.RemoteMessage];[/method]

@@ -25,7 +25,7 @@ Creates a standard dynamic link.
 [collapse Example]
 ```javascript
 const link = 
-  new firebase.links.DynamicLink('https://example.com?param1=foo&param2=bar', 'abc123.app.goo.gl')
+  new firebase.links.DynamicLink('https://example.com?param1=foo&param2=bar', 'abc123.page.link')
     .android.setPackageName('com.example.android')
     .ios.setBundleId('com.example.ios');
 
@@ -50,7 +50,7 @@ Creates a short dynamic link.
 [collapse Example]
 ```javascript
 const link = 
-  new firebase.links.DynamicLink('https://example.com?param1=foo&param2=bar', 'abc123.app.goo.gl')
+  new firebase.links.DynamicLink('https://example.com?param1=foo&param2=bar', 'abc123.page.link')
     .android.setPackageName('com.example.android')
     .ios.setBundleId('com.example.ios');
 

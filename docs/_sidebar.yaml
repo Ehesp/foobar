@@ -6,6 +6,8 @@
       text: Getting Started
     - to: "/release-notes"
       text: Release Notes
+    - to: "/about"
+      text: About
   - title: Installation
     links:
     - to: "/installation/initial-setup"
@@ -18,8 +20,6 @@
       icon: android
     - to: "/installation/javascript"
       text: Usage
-    - to: "/installation/migration-guide"
-      text: Migration Guide
     - to: "/installation/basic-kit"
       text: Basic Starter Kit
   - title: Troubleshooting
@@ -35,7 +35,7 @@
     - to: "/contributing"
       text: Getting Started
     - to: "/testing"
-      text: Testing      
+      text: Testing
 - title: Modules
   categories:
   - title: Admob
@@ -106,6 +106,7 @@
       - ActionCodeSettings
       - AdditionalUserInfo
       - AuthCredential
+      - AuthSettings
       - ConfirmationResult
       - EmailAuthProvider
       - Error
@@ -133,7 +134,7 @@
     - to: "/transactions"
       text: Transactions
       icon: info-circle-o
-    - to: "https://medium.com/@elliothesp/b338fb6525b9"
+    - to: "https://invertase.io/blog/getting-started-with-cloud-firestore-on-react-native"
       text: Building a TODO app
       type: external
       icon: info-circle-o
@@ -156,6 +157,7 @@
       - SetOptions
       - Settings
       - SnapshotMetadata
+      - Timestamp
       - Transaction
       - WriteBatch
   - title: Cloud Functions
@@ -185,7 +187,7 @@
     - to: "/introduction"
       text: Introduction
     - to: "/device-token"
-      text: Device Registration Token 
+      text: Device Registration Token
     - to: "/receiving-messages"
       text: Receiving Messages
     - to: "/topics"
@@ -200,6 +202,7 @@
     - type: divider
     - type: reference
       files:
+      - IOSMessaging
       - Messaging
       - RemoteMessage
   - title: Core / App
@@ -209,10 +212,10 @@
       text: Default App
     - to: "/initialize-apps"
       text: Initializing Apps
-    - type: divider  
+    - type: divider
     - type: reference
       files:
-      - core 
+      - core
       - App
   - title: Crashlytics
     path: crashlytics
@@ -223,25 +226,12 @@
     - to: "/android"
       text: Install on Android
       icon: android
-    - type: divider  
+    - to: "/manual-initialization"
+      text: Manual Initialization
+    - type: divider
     - type: reference
       files:
-      - crashlytics 
-  - title: Crash Reporting
-    path: crash
-    links:
-    - to: "/ios"
-      text: Install on iOS
-      icon: apple
-    - to: "/android"
-      text: Install on Android
-      icon: android
-    - to: "/manual-reporting"
-      text: Manual Reporting
-    - type: divider  
-    - type: reference
-      files:
-      - crash 
+      - crashlytics
   - title: Database
     path: database
     links:
@@ -251,7 +241,7 @@
     - to: "/android"
       text: Install on Android
       icon: android
-    - type: divider  
+    - type: divider
     - type: reference
       files:
       - database
@@ -280,6 +270,19 @@
       - ITunesParameters
       - NavigationParameters
       - SocialParameters
+  - title: In App Messaging
+    path: in-app-messaging
+    links:
+    - to: "/ios"
+      text: Install on iOS
+      icon: apple
+    - to: "/android"
+      text: Install on Android
+      icon: android
+    - type: divider
+    - to: "/getting-started"
+      text: Getting Started
+      icon: info-circle-o
   - title: Instance ID
     path: iid
     links:
@@ -335,6 +338,10 @@
       text: Notification Actions
       icon: android
     - type: divider
+    - to: "https://medium.com/@katharinep/firebase-notification-integration-in-react-native-0-60-3a8d6c8d56ff"
+      text: React Native 0.60+ Integration
+      type: external
+      icon: info-circle-o
     - to: "https://medium.com/the-modern-development-stack/react-native-push-notifications-with-firebase-cloud-functions-74b832d45386"
       text: With Cloud Functions
       type: external
@@ -403,11 +410,14 @@
     - to: "/android"
       text: Install on Android
       icon: android
+    - to: "/example"
+      text: Example
     - type: divider
     - type: reference
       files:
       - perf-mon
       - Trace
+      - HttpMetric
 - title: "Explore"
   categories:
   - title: Library

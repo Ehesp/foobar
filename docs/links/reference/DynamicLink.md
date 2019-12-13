@@ -14,7 +14,7 @@ To create a DynamicLink, first populate it by using the `setX` methods available
 | Parameter |         |
 | --------- | ------- |
 | link    | **string** <br/> The link the target app will open. You can specify any URL the app can handle, such as a link to the app’s content, or a URL that initiates some app-specific logic such as crediting the user with a coupon, or displaying a specific welcome screen. This link must be a well-formatted URL, be properly URL-encoded, and use the HTTP or HTTPS scheme. |
-| dynamicLinkDomain     | **string** <br/> The Firebase project’s Dynamic Links domain. You can find this value in the Dynamic Links section of the Firebase console. |
+| domainURIPrefix     | **string** <br/> The Firebase project’s Dynamic Links domain. You can find this value in the Dynamic Links section of the Firebase console. It must begin with `https://` |
 
 ## Properties
 

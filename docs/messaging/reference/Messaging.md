@@ -6,6 +6,14 @@ This `messaging` module deals with pure data-only messages only.  If you're inte
 
 !> On iOS, your app first needs to have [ref Messaging#requestPermission] in order to receive Cloud Messages.
 
+## Properties
+
+### ios
+
+[method]ios returns [ref messaging.IOSMessaging];[/method]
+
+Gets the iOS specific methods and properties of messaging.
+
 ## Methods
 
 The following methods are accessed via the Cloud Messaging instance `firebase.messaging()`.
@@ -13,9 +21,9 @@ The following methods are accessed via the Cloud Messaging instance `firebase.me
 ### getToken
 [method]getToken() returns Promise containing String;[/method]
 
-This generated registration token is used to identify the app instance and periodically sends data to the Firebase backend. To stop this, call firebase.messaging.Messaging#deleteToken.
+This generated registration token is used to identify the app instance and periodically sends data to the Firebase backend. To reset this; call [ref Messaging#deleteToken].
 
-Returns the FCM token;
+Returns the current FCM token.
 
 ### hasPermission
 [method]hasPermission() returns Promise containing boolean;[/method]
@@ -50,6 +58,8 @@ Parameter |         |
 [method]requestPermission() returns Promise containing void;[/method]
 
 Notification permissions are required to send a user push messages. Calling this method displays the permission dialog to the user and resolves if the permission is granted.
+
+After granting the permission, calling [ref messaging.IOSMessaging#registerForRemoteNotifications] will sync your app's apns token with firebase on demand.
 
 Returns a promise that resolves if permission is granted, otherwise, it is rejected with an error.
 

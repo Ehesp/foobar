@@ -65,7 +65,7 @@ Notifications encompass three different types:
 
 A notification will trigger one of two listeners depending on the state of your application:
 
-- `onNotificationDisplayed` - Triggered when a particular notification has been displayed
+- `onNotificationDisplayed` - Triggered when a particular notification has been displayed. **iOS Only**: see [ref notifications.IOSNotification#complete] for details on handling completion of background downloads
 - `onNotification` - Triggered when a particular notification has been received
 
 ```js
@@ -73,18 +73,18 @@ A notification will trigger one of two listeners depending on the state of your 
 import type { Notification } from 'react-native-firebase';
 
 componentDidMount() {
-    this.notificationDisplayedListener = firebase.notifications().onNotificationDisplayed((notification: Notification) => {
+    this.removeNotificationDisplayedListener = firebase.notifications().onNotificationDisplayed((notification: Notification) => {
         // Process your notification as required
         // ANDROID: Remote notifications do not contain the channel ID. You will have to specify this manually if you'd like to re-display the notification.
     });
-    this.notificationListener = firebase.notifications().onNotification((notification: Notification) => {
+    this.removeNotificationListener = firebase.notifications().onNotification((notification: Notification) => {
         // Process your notification as required
     });
 }
 
 componentWillUnmount() {
-    this.notificationDisplayedListener();
-    this.notificationListener();
+    this.removeNotificationDisplayedListener();
+    this.removeNotificationListener();
 }
 ```
 
@@ -100,7 +100,7 @@ If your app is in the foreground, or background, you can listen for when a notif
 import type { Notification, NotificationOpen } from 'react-native-firebase';
 
 componentDidMount() {
-    this.notificationOpenedListener = firebase.notifications().onNotificationOpened((notificationOpen: NotificationOpen) => {
+    this.removeNotificationOpenedListener = firebase.notifications().onNotificationOpened((notificationOpen: NotificationOpen) => {
         // Get the action triggered by the notification being opened
         const action = notificationOpen.action;
         // Get information about the notification that was opened
@@ -109,11 +109,11 @@ componentDidMount() {
 }
 
 componentWillUnmount() {
-    this.notificationOpenedListener();
+    this.removeNotificationOpenedListener();
 }
 ```
 
-### App Closed
+### App Closed
 
 If your app is closed, you can check if it was opened by a notification being clicked / tapped / opened as follows:
 

@@ -1,5 +1,7 @@
 # iOS Installation
 
+!> Invites has been removed from the Firebase SDKs, and removed here as of v5.5.0. This documentation is only here for users of older versions of the library. Use Dynamic Links instead.
+
 First ensure you have followed the [initial setup guide](version /installation/initial-setup) and the [dynamic links setup guide](version /links/ios).
 
 > On iOS, users must be signed in with their Google Accounts before they can send invitations.
