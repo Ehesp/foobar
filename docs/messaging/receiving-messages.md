@@ -26,9 +26,9 @@ firebase.messaging().hasPermission()
   });
 ```
 
-## 2) Request permissions
+## 2) Request permissions (iOS only)
 
-If the user has not already granted permissions, then you can prompt them to do so, as follows:
+On iOS, you are required to ask the operating system to listen for messages:
 
 ```js
 try {
