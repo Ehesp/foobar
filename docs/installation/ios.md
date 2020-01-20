@@ -97,6 +97,7 @@ Simply add the following to your `Podfile` either at the top level, or within th
 # Required by RNFirebase
 pod 'Firebase/Core', '~> {{ ios.firebase.core }}'
 ```
+⚠ For **iOS 13** you must use Firebase iOS SDK at version `^6.5.x`. Otherwise your app may crash, for more information [take a look on this issue](https://github.com/invertase/react-native-firebase/issues/2409)
 
 Run `pod install`.
 
