@@ -12,8 +12,12 @@ The following methods are accessed via the Analytics instance `firebase.analytic
 [method]logEvent(event, params) returns void;[/method]
 
 Log a custom event with optional params.
+
 Note: Event names should contain 1 to 32 alphanumeric characters or underscores.
-Note 2: up to 100 characters is the maximum character length supported for event parameters.
+
+Note 2: up to 40 characters is the maximum character length supported for event parameter names, and up to 100 characters is the maximum character length supported for event parameter values.
+
+See [Collection and configuration limits](https://support.google.com/firebase/answer/9237506?hl=en) in Firebase Help for additional information.
 
 | Parameter |         |
 | --------- | ------- |
