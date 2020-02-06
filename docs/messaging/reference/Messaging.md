@@ -28,7 +28,7 @@ Returns the current FCM token.
 ### hasPermission
 [method]hasPermission() returns Promise containing boolean;[/method]
 
-Checks if the user has granted the appropriate permissions to be able to send and receive messages.
+Checks if the user has granted the appropriate permissions **at the device level NOT via firebase cloud** to be able to send and receive messages.
 
 Returns true if permission is granted, false otherwise.
 
