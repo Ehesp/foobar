@@ -16,7 +16,7 @@ Before you can schedule a notification on Android, you must ensure you have crea
 
 ```js
 // Build notification
-const notification = new firebase.notifications.Notification()...;
+const notification = new firebase.notifications.Notification();
 
 // Schedule the notification for 1 minute in the future
 const date = new Date();
