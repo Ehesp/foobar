@@ -109,15 +109,15 @@ export default async (message: RemoteMessage) => {
 
 ### 3) Register the background handler
 
-In your main `index.js` you need to register your background handler as follows:
+In your main `index.js` you need to register your background handler before the main component as follows:
 
 ```js
 import bgMessaging from './src/bgMessaging'; // <-- Import the file you created in (2)
 
-// Current main application
-AppRegistry.registerComponent('ReactNativeFirebaseDemo', () => bootstrap);
 // New task registration
 AppRegistry.registerHeadlessTask('RNFirebaseBackgroundMessage', () => bgMessaging); // <-- Add this line
+// Current main application
+AppRegistry.registerComponent('ReactNativeFirebaseDemo', () => bootstrap);
 ```
 
 > The headless task must be registered as `RNFirebaseBackgroundMessage`.
