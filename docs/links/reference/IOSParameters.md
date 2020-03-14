@@ -1,6 +1,6 @@
 # IOSParameters
 
-Android specific link settings.
+IOS specific link settings.
 
 ## Methods
 
