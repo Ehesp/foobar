@@ -80,3 +80,11 @@ public class MainApplication extends Application implements ReactApplication {
 ```
 
 ?> If you're migrating from Fabric ensure you **remove the `fabric.properties` file** from your android project - if you do not do this you will not receive crash reports on the Firebase console.
+
+## Report Crash Events
+
+Crashylitcs has two types of events. **Crash** and **Non-fatal**. In order to report Crash events it is necessary to reopen the application so that Firebase can send the report. But on Android the app doesn't report Crash type events with debug APK (this APK that is used by react-native run-android command, even if you're not in React Native debug mode), so on Android you need generate a release APK to see Crash report on Firebase Console. 
+  1. Open the app. 
+  2. Force a crash. 
+  3. Reopen the app without crash.
+  4. Wait about 5 minutes for the crash report to appear on the Firebase console.
